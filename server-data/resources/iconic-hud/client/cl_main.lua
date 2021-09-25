@@ -110,7 +110,8 @@ end)
 Citizen.CreateThread(function ()
 	while true do
 		local isTalking = NetworkIsPlayerTalking(PlayerId())
-        local pRadioActive = exports['np-voice']:pRadioActive()
+        -- local pRadioActive = exports['np-voice']:pRadioActive()
+		local pRadioActive = false
 		if isTalking and pRadioActive == false then
             SendNUIMessage({talking = true})
         elseif pRadioActive == true then 
@@ -164,7 +165,7 @@ Citizen.CreateThread(function()
             intersectStreetName = GetStreetNameFromHashKey(intersectStreetHash)
             zone = tostring(GetNameOfZone(x, y, z))
             local area = GetLabelText(zone)
-            local pRadio = exports['radio']:pChannel()
+            -- local pRadio = exports['radio']:pChannel()
 
             if not zone then
                 zone = "UNKNOWN"
@@ -240,7 +241,8 @@ Citizen.CreateThread(function()
 
 			local get_ped = PlayerPedId()
             local armor = GetPedArmour(PlayerPedId())
-			local death = exports['ragdoll']:GetDeathStatus()
+			-- local death = exports['ragdoll']:GetDeathStatus()
+			local death = false
             currentValues["health"] = GetEntityHealth(get_ped) - 100
 			currentValues["armor"] = GetPedArmour(get_ped)
 			currentValues["stress"] = math.ceil(stresslevel / 100)
