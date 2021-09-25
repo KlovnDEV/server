@@ -1,0 +1,76 @@
+#-----------------------------#
+# [EN] Only change the IP if you're using a server with multiple network interfaces, otherwise change the port only.
+
+endpoint_add_tcp "0.0.0.0:30120"
+endpoint_add_udp "0.0.0.0:30120"
+#-----------------------------#
+
+set mysql_connection_string "host=93.123.16.22;user=panda;database=panda7;password=Zk3wRVhEc2QAl1"
+
+#-----------------------------#
+set onesync_workaround763185 true
+set onesync_forceMigration true
+set onesync_distanceCullVehicles true
+set steam_webApiKey "3D9BA9A4D28C84D33CDC72515FB4DF18"
+#-----------------------------#
+
+sets sv_projectName "udp"
+sets sv_projectDesc "udp"
+
+#-----------------------------#
+add_principal identifier.steam:110000117808edd group.admin
+add_ace resource.console command allow
+
+ensure mapmanager
+ensure chat
+ensure spawnmanager
+ensure sessionmanager
+ensure basic-gamemode
+ensure hardcap
+ensure rconlog
+
+#-----------------------------#
+# [EN] This allows players to use scripthook-based plugins such as the legacy Lambda Menu.
+# [EN] Set this to 1 to allow scripthook. Do note that this does _not_ guarantee players won't be able to use external plugins.
+sv_scriptHookAllowed 0
+#-----------------------------#
+# [EN] A comma-separated list of tags for your server.
+# - sets tags "drifting, cars, racing"
+sets tags ""
+setr voice_use3dAudio true
+setr voice_useSendingRangeOnly true
+#-----------------------------#
+
+
+#-----------------------------#
+# [EN] Set an optional server info and connecting banner image url.
+# [EN] Size doesn't matter, any banner sized image will be fine.
+sets banner_detail ""
+sets banner_connecting ""
+#-----------------------------#
+
+
+#-----------------------------#
+# [EN] Set your server's hostname
+sv_hostname "server v1"
+
+#-----------------------------#
+# Loading a server icon (96x96 PNG file)
+# load_server_icon np_logo.png
+
+#-----------------------------#
+# [EN] Uncomment this line if you do not want your server to be listed in the server browser.
+##sv_master1 ""
+
+#-GAME BUILD 2060-#
+set sv_enforceGameBuild 2060
+
+# [EN] Add system admins
+add_ace group.admin command allow
+
+sv_endpointprivacy true
+
+sv_maxclients 8
+
+# [EN] License key for your server (https://keymaster.fivem.net)
+sv_licenseKey clmyhtywmh6khm6xpgj28xrdrhg8xx40 # nikigot2

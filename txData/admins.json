@@ -1,0 +1,21 @@
+[
+  {
+    "name": "Nikez1",
+    "master": true,
+    "password_hash": "$2a$11$rhpfZ1tkxN11VWXxaygSEeCRKTom/sFrrudzg5fkIGgyBVBMPfEfK",
+    "providers": {
+      "citizenfx": {
+        "id": "Nikez1",
+        "identifier": "fivem:1872463",
+        "data": {
+          "sub": "df1768d2bd4c1336c060000e0ffefbd0",
+          "nameid": "https://forum.cfx.re/internal/user/1872463",
+          "name": "Nikez1",
+          "picture": "https://avatars.discourse.org/v4/letter/n/7933a0/256.png",
+          "profile": "https://forum.cfx.re/u/Nikez1"
+        }
+      }
+    },
+    "permissions": []
+  }
+]
