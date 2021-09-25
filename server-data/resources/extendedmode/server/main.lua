@@ -92,7 +92,7 @@ function loadESXPlayer(identifier, playerId)
 		weight = 0
 	}
 
-	MySQL.Async.fetchAll('SELECT accounts, job, job_grade, `group`, loadout, position, inventory FROM users WHERE identifier = @identifier', {
+	MySQL.Async.fetchAll('SELECT accounts, job, job_grade, `group`, loadout, inventory FROM users WHERE identifier = @identifier', {
 		['@identifier'] = identifier
 	}, function(result)
 		local job, grade, jobObject, gradeObject = result[1].job, tostring(result[1].job_grade)
