@@ -1,7 +1,7 @@
 RegisterNetEvent("server-utilities:spawnVehicle")
-AddEventHandler("server-utilities:spawnVehicle", function(vehicleModel)
+AddEventHandler("server-utilities:spawnVehicle", function(vehicleModel, vehicle)
     local model = GetHashKey(vehicleModel)
-    local ped = GetPlayerPed(-1)
+    local ped = PlayerPedId()
 
     if IsModelValid(model) then
         RequestModel(model)
@@ -19,22 +19,22 @@ AddEventHandler("server-utilities:spawnVehicle", function(vehicleModel)
     end
 end)
 
-RegisterCommand('kon', function(source, args, rawCommand)
-    RPC.execute('client', 'server-utilities:spawnVehicle', args[1])
-    RPC.execute('client', 'health', '')
-end)
-
-RegisterNetEvent('health')
-AddEventHandler('health', function()
-    plr = PlayerPedId()
-    hlt = GetEntityHealth(plr)
-    print(hlt)
-end)
-
 RegisterNetEvent("server-utilities:sitInVehicle")
-AddEventHandler("server-utilities:sitInVehicle", function(vehicleModel)
-    local model = GetHashKey(vehicleModel)
+AddEventHandler("server-utilities:sitInVehicle", function(vehicle, source, args, rawCommand)
     local ped = PlayerPedId()
 
-    SetPedIntoVehicle(ped, vehicle, -1)
+    if vehicle then
+        TaskWarpPedIntoVehicle(ped,  vehicle, -1)
+        print(vehicle)
+    else
+        print('prost')
+    end
+end)
+
+RegisterNetEvent('server-utilities:coords')
+AddEventHandler('server-utilities:coords', function()
+    plr = PlayerPedId()
+    xyz = GetEntityCoords(plr)
+    heading = GetEntityHeading(plr)
+    print('XYZ: '..xyz.. 'Heading: '..heading)
 end)

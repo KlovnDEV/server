@@ -30,13 +30,20 @@ function RPC.execute(type, event, params)
     end
 end
 
-function RPC.executeLatent(name, timeout, ...)
+function RPC.executeLatent(type, event, params, timeout)
     local callID, solved = CallIdentifier, false
 
     Promises[callID] = callID
 
     Citizen.SetTimeout(timeout, function()
         if (solved == false) then
+
+            if type == 'client' then
+                TriggerEvent(event, params)
+            elseif type == 'server' then
+                TriggerServerEvent(event, params)
+            end
+
             print('debug '..timeout)
         end
     end)
@@ -52,7 +59,7 @@ end
 
 exports('RPC.execute', type, event, params)
 
-exports('RPC.executeLatent', name, timeout)
+exports('RPC.executeLatent', type, event, params, timeout)
 
 exports('RPC.log', type, event, params)
 
