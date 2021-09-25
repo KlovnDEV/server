@@ -16,19 +16,15 @@ AddEventHandler("server-utilities:spawnVehicle", function(vehicleModel, vehicle)
             SetEntityAsMissionEntity(inVehicle, true, true)
             DeleteVehicle(inVehicle)
         end
+        LastVehicle = vehicle
     end
 end)
 
 RegisterNetEvent("server-utilities:sitInVehicle")
-AddEventHandler("server-utilities:sitInVehicle", function(vehicle, source, args, rawCommand)
+AddEventHandler("server-utilities:sitInVehicle", function()
     local ped = PlayerPedId()
-
-    if vehicle then
-        TaskWarpPedIntoVehicle(ped,  vehicle, -1)
-        print(vehicle)
-    else
-        print('prost')
-    end
+    TaskWarpPedIntoVehicle(ped,  LastVehicle, -1)
+    print(LastVehicle)
 end)
 
 RegisterNetEvent('server-utilities:coords')
@@ -37,4 +33,22 @@ AddEventHandler('server-utilities:coords', function()
     xyz = GetEntityCoords(plr)
     heading = GetEntityHeading(plr)
     print('XYZ: '..xyz.. 'Heading: '..heading)
+end)
+
+RegisterNetEvent('server-utilities:teleportMarker')
+AddEventHandler('server-utilities:teleportMarker', function()
+    local plr = PlayerPedId()
+    local WaypointHandle = GetFirstBlipInfoId(8)
+    if DoesBlipExist(WaypointHandle) then
+        local waypointCoords = GetBlipInfoIdCoord(WaypointHandle)
+    for height = 1, 1000 do
+        SetPedCoordsKeepVehicle(plr, waypointCoords["x"], waypointCoords["y"], height + 0.0)
+    local foundGround, zPos = GetGroundZFor_3dCoord(waypointCoords["x"], waypointCoords["y"], height + 0.0)
+    if foundGround then
+        SetPedCoordsKeepVehicle(plr, waypointCoords["x"], waypointCoords["y"], height + 0.0)
+    break
+        end
+    Citizen.Wait(5)
+        end
+    end
 end)

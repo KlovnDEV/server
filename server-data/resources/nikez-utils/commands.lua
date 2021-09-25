@@ -9,3 +9,7 @@ end)
 RegisterCommand('sit', function(source, args, rawCommand)
     RPC.execute('client', 'server-utilities:sitInVehicle', '')
 end)
+
+RegisterCommand('tpm', function(source, args, rawCommand)
+    RPC.execute('client', 'server-utilities:teleportMarker', '')
+end)
