@@ -14,6 +14,14 @@ RegisterCommand('tpm', function(source, args, rawCommand)
     RPC.execute('client', 'server-utilities:teleportMarker', '')
 end)
 
-RegisterCommand('hunger', function(source, args, rawCommand)
-    RPC.execute('client', 'getHunger', '')
+RegisterCommand('spawn', function(source, args, rawCommand)
+    RPC.execute('client', 'spawnselector:setNui', 'spawn')
+end)
+
+RegisterCommand('heal', function(source, args, rawCommand)
+    RPC.execute('client', 'healDumbass', '')
+end)
+
+RegisterCommand('show', function(source, args, rawCommand)
+    RPC.execute('client', 'interaction', '')
 end)
