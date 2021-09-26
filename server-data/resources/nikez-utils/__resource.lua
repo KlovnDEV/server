@@ -8,12 +8,11 @@ version '1.0.0'
 
 -- What to run
 client_scripts {
-    'client.lua',
-    'commands.lua',
+    'clients/*.lua',
     '@lib/clients/cl_rpc.lua',
 }
 server_scripts {
-    'server/sv_main.lua',
+    'server/*.lua',
     '@lib/clients/cl_rpc.lua',
     '@mysql-async/lib/MySQL.lua',
 }
