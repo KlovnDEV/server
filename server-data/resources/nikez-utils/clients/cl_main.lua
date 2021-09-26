@@ -52,3 +52,14 @@ AddEventHandler('server-utilities:teleportMarker', function()
         end
     end
 end)
+
+RegisterNetEvent('getId')
+AddEventHandler('getId', function(id)
+    plr = PlayerPedId()
+    id = GetPlayerServerId(NetworkGetEntityOwner(plr))
+    TriggerEvent('chat:addMessage', {
+        color = { 255, 0, 0},
+        multiline = true,
+        args = {"Your ID is: "..id}
+      })
+end)

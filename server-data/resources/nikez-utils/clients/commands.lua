@@ -2,6 +2,7 @@ TriggerEvent('chat:addSuggestion', '/tpm', 'Teleport to marker')
 TriggerEvent('chat:addSuggestion', '/sit', 'Sit in spawned car')
 TriggerEvent('chat:addSuggestion', '/car', 'Spawn Car [args]')
 TriggerEvent('chat:addSuggestion', '/coords', 'Player Coordinates')
+TriggerEvent('chat:addSuggestion', '/id', 'Your ID')
 TriggerEvent('chat:addSuggestion', '/debug', 'Enable/Disable Debug')
 
 RegisterCommand('coords', function(source, args, rawCommand)
@@ -30,6 +31,10 @@ end)
 
 RegisterCommand('debug', function(source, args, rawCommand)
     RPC.execute('client', 'hud:enabledebug', '')
+end)
+
+RegisterCommand('id', function(source, args, rawCommand)
+    RPC.execute('client', 'getId', '')
 end)
 
 RegisterCommand('heal', function(source, args, rawCommand)
