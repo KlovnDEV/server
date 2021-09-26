@@ -238,6 +238,17 @@ Citizen.CreateThread(function()
                 })
             end
 
+	Citizen.CreateThread(function()
+        while(true) do
+            Citizen.Wait(500)
+            TriggerEvent('esx_status:getStatus', 'hunger', function(status)
+                HunVal = status.val/1000000*100
+            end)
+            TriggerEvent('esx_status:getStatus', 'thirst', function(status)
+                ThiVal = status.val/1000000*100
+            end)
+        end
+    end)
 
 			local get_ped = PlayerPedId()
             local armor = GetPedArmour(PlayerPedId())
@@ -250,17 +261,14 @@ Citizen.CreateThread(function()
 
 			if currentValues["stress"] > 100 then currentValues["stress"] = 100 end
 
-      		if currentValues["hunger"] < 0 then
-				currentValues["hunger"] = 0
-			end
-			if currentValues["thirst"] < 0 then
-				currentValues["thirst"] = 0
-			end
+      		currentValues["hunger"] = HunVal
 
-			if currentValues["hunger"] > 100 then currentValues["hunger"] = 100 end
+			currentValues["thirst"] = ThiVal
+
+			-- if currentValues["hunger"] > 100 then currentValues["hunger"] = 100 end
 
 			if currentValues["health"] < 1 then currentValues["health"] = 100 end
-			if currentValues["thirst"] > 100 then currentValues["thirst"] = 100 end
+			-- if currentValues["thirst"] > 100 then currentValues["thirst"] = 100 end
             if currentValues["oxy"] <= 0 then currentValues["oxy"] = 0 end
 
             SendNUIMessage({
@@ -520,27 +528,27 @@ AddEventHandler('hud:saveCurrentMeta', function()
 	TriggerServerEvent("police:update:hud",GetEntityHealth(PlayerPedId()),GetPedArmour(PlayerPedId()),currentValues["thirst"],currentValues["hunger"],currentValues["armor"])
 end)
 
-Citizen.CreateThread(function()
-    while true do
-    	if currentValues["hunger"] > 0 then
-    		currentValues["hunger"] = currentValues["hunger"] - math.random(2)
-    	end
-	    if currentValues["thirst"] > 0 then
-    		currentValues["thirst"] = currentValues["thirst"] - 1
-    	end	
+-- Citizen.CreateThread(function()
+--     while true do
+--     	-- if currentValues["hunger"] > 0 then
+--     	-- 	currentValues["hunger"] = currentValues["hunger"] - math.random(2)
+--     	-- end
+-- 	    -- if currentValues["thirst"] > 0 then
+--     	-- 	currentValues["thirst"] = currentValues["thirst"] - 1
+--     	-- end	
 
-		Citizen.Wait(300000)
-    	TriggerServerEvent("police:update:hud",GetEntityHealth(PlayerPedId()),GetPedArmour(PlayerPedId()),currentValues["thirst"],currentValues["hunger"])
+-- 		Citizen.Wait(300000)
+--     	TriggerServerEvent("police:update:hud",GetEntityHealth(PlayerPedId()),GetPedArmour(PlayerPedId()),currentValues["thirst"],currentValues["hunger"])
 		
-		if currentValues["thirst"] < 20 or currentValues["hunger"] < 20 then
+-- 		-- if currentValues["thirst"] < 20 or currentValues["hunger"] < 20 then
 
 
-			local newhealth = GetEntityHealth(PlayerPedId()) - math.random(10)
-			SetEntityHealth(PlayerPedId(), newhealth)
+-- 			local newhealth = GetEntityHealth(PlayerPedId()) - math.random(10)
+-- 			SetEntityHealth(PlayerPedId(), newhealth)
 			
-		end
-	end
-end)
+-- 		end
+-- 	end
+-- end)
 
 
 Citizen.CreateThread( function()
@@ -759,21 +767,21 @@ AddEventHandler('coffee:drink2', function()
 end)
 
 
-RegisterNetEvent('changehunger')
-AddEventHandler('changehunger', function()
+-- RegisterNetEvent('changehunger')
+-- AddEventHandler('changehunger', function()
 	
 
-	currentValues["hunger"] = currentValues["hunger"] + 25
+-- 	currentValues["hunger"] = currentValues["hunger"] + 25
 
-	if currentValues["hunger"] < 0 then
-		currentValues["hunger"] = 0
-	end
+-- 	if currentValues["hunger"] < 0 then
+-- 		currentValues["hunger"] = 0
+-- 	end
 
-	if currentValues["hunger"] > 100 then
-		currentValues["hunger"] = 100
-	end
+-- 	if currentValues["hunger"] > 100 then
+-- 		currentValues["hunger"] = 100
+-- 	end
 
-end)
+-- end)
 
 local lastDamageTrigger = 0
 
@@ -1037,8 +1045,8 @@ AddEventHandler("recoil:updateposition", function(sendFactor)
 end)
 
 
-currentValues["hunger"] = 100
-currentValues["thirst"] = 100
+-- currentValues["hunger"] = 100
+-- currentValues["thirst"] = 100
 
 hunger = "Full"
 thirst = "Sustained"
@@ -1385,8 +1393,8 @@ stresslevel = 0
 RegisterNetEvent("police:setClientMeta")
 AddEventHandler("police:setClientMeta",function(meta)
 	if meta == nil then return end
-	if meta.thirst == nil then currentValues["thirst"] = 100 else currentValues["thirst"] = meta.thirst end
-	if meta.hunger == nil then currentValues["hunger"] = 100 else currentValues["hunger"] = meta.hunger end
+	-- if meta.thirst == nil then currentValues["thirst"] = 100 else currentValues["thirst"] = meta.thirst end
+	-- if meta.hunger == nil then currentValues["hunger"] = 100 else currentValues["hunger"] = meta.hunger end
 	if meta.health == nil then
 		return
 	end
@@ -1405,8 +1413,8 @@ end)
 RegisterNetEvent("np-admin:currentDevmode")
 AddEventHandler("np-admin:currentDevmode", function(devmode)
     currentValues["devmode"] = devmode
-	currentValues["thirst"] = 100
-	currentValues["hunger"] = 100 
+	-- currentValues["thirst"] = 100
+	-- currentValues["hunger"] = 100 
 end)
 
 RegisterNetEvent("np-admin:currentDebug")

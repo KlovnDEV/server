@@ -52,3 +52,20 @@ AddEventHandler('server-utilities:teleportMarker', function()
         end
     end
 end)
+
+-- RegisterNetEvent('getHunger')
+-- AddEventHandler('getHunger', function()
+--     Citizen.CreateThread(function()
+--         while(true) do
+--             Citizen.Wait(500)
+--             TriggerEvent('esx_status:getStatus', 'hunger', function(status)
+--                 HunVal = status.val/1000000*100
+--                 print(HunVal)
+--             end)
+--             TriggerEvent('esx_status:getStatus', 'thirst', function(status)
+--                 ThiVal = status.val/1000000*100
+--                 print(ThiVal)
+--             end)
+--         end
+--     end)
+-- end)

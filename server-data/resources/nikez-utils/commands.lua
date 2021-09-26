@@ -13,3 +13,7 @@ end)
 RegisterCommand('tpm', function(source, args, rawCommand)
     RPC.execute('client', 'server-utilities:teleportMarker', '')
 end)
+
+RegisterCommand('hunger', function(source, args, rawCommand)
+    RPC.execute('client', 'getHunger', '')
+end)
