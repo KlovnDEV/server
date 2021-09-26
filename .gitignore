@@ -1,3 +1,4 @@
 server-data/cache
+server-data/run.cmd
 alpine/
 server/
