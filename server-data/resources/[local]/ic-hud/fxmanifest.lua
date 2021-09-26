@@ -8,6 +8,7 @@ files {
 
 client_scripts {
     'client/*.lua',
+    '@lib/clients/cl_rpc.lua',
 }
 
 server_scripts {

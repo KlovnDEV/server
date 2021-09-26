@@ -1419,8 +1419,14 @@ AddEventHandler("np-admin:currentDebug", function(debugToggle)
     currentValues["devdebug"] = debugToggle
 end)
 
-
-
 exports("setFuel", function(veh, amt)
 	DecorSetInt(veh, "GetVehicleCurrentFuel", amt)
 end)
+
+AddEventHandler('onResourceStart', function(resourceName)
+	if (GetCurrentResourceName() ~= resourceName) then
+	  return
+	end
+	print('' .. resourceName .. ' has been started.')
+	RPC.execute('client', 'iconic-hud:EnableHud', '')
+  end)
