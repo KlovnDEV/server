@@ -1,0 +1,9 @@
+--Name: jobcenter_enter | 2021-09-26T19:28:14Z
+BoxZone:Create(vector3(173.11, -26.06, 68.34), 1.2, 1.4, {
+  name="jobcenter_enter",
+  heading=340,
+  --debugPoly=true,
+  minZ=67.34,
+  maxZ=69.34
+})
+
