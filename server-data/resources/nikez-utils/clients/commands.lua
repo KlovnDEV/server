@@ -22,6 +22,10 @@ RegisterCommand('ad', function(source, args, rawCommand)
     RPC.execute('server', 'adminCheck', '')
 end)
 
+RegisterCommand('debug', function(source, args, rawCommand)
+    RPC.execute('client', 'hud:enabledebug', '')
+end)
+
 RegisterCommand('heal', function(source, args, rawCommand)
     plr = PlayerPedId()
 
