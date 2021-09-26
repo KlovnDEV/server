@@ -5,6 +5,7 @@ veloc = GetEntityVelocity(veh)
 engine = false
 dead = false
 sleeping = false
+debugStatus = false -- print(hunger, thrist values)
 lastValues = {}
 
 currentValues = {
@@ -241,9 +242,15 @@ Citizen.CreateThread(function()
 	Citizen.CreateThread(function()
             TriggerEvent('esx_status:getStatus', 'hunger', function(status)
                 HunVal = status.val/1000000*100
+				if debugStatus then
+					print("Hunger: "..HunVal)
+				end
             end)
             TriggerEvent('esx_status:getStatus', 'thirst', function(status)
                 ThiVal = status.val/1000000*100
+				if debugStatus then
+					print("Thrist: "..ThiVal)
+				end
             end)
     end)
 

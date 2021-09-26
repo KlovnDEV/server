@@ -52,14 +52,3 @@ AddEventHandler('server-utilities:teleportMarker', function()
         end
     end
 end)
-
-RegisterNetEvent('healDumbass')
-AddEventHandler('healDumbass', function(source, args, rawCommand)
-    plr = PlayerPedId()
-
-    if args[1] == 'h' then
-        SetEntityHealth(plr, 200)
-    elseif args[1] == 'b' then
-        SetPedArmour(plr, 100)
-    end
-end)

@@ -213,15 +213,22 @@ window.addEventListener("message", function(event) {
 
     if (data.armor == 100) {
         $("#ArmorIndicator").fadeOut();
-        }
+    }
         else if (data.armor < 100) 
         $("#ArmorIndicator").fadeIn();{
-        }
+    }
 
-    if (data.thirst == 100) {
+    if (data.hunger > 95) {
+        $("#HungerIndicator").fadeOut();
+    }
+    else if (data.hunger < 95) 
+        $("#HungerIndicator").fadeIn();{
+    }
+
+    if (data.thirst > 95) {
         $("#ThirstIndicator").fadeOut();
     }
-    else if (data.thirst < 100) 
+    else if (data.thirst < 95) 
         $("#ThirstIndicator").fadeIn();{
     }
 // 
