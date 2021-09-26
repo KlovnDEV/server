@@ -1,2 +1,2 @@
-cd /d D:\Documents\server\server-data
-D:\Documents\server\server\FXServer.exe +exec server.cfg
+cd /d D:\server\server\server-data
+D:\server\server\server\FXServer.exe +exec server.cfg

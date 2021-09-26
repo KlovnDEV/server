@@ -58,7 +58,7 @@ AddEventHandler('getId', function(id)
     plr = PlayerPedId()
     id = GetPlayerServerId(NetworkGetEntityOwner(plr))
     TriggerEvent('chat:addMessage', {
-        color = { 255, 0, 0},
+        color = {255,255,255},
         multiline = true,
         args = {"Your ID is: "..id}
       })
