@@ -11,7 +11,15 @@ FinanceOffice2 = {
     
     Style = {
         Theme = {
+            warm = {interiorId = 238593, ipl = "ex_dt1_11_office_03a", safe = "ex_prop_safedoor_office3a"},
+            classical = {interiorId = 238849, ipl = "ex_dt1_11_office_03a", safe = "ex_prop_safedoor_office3a"},
+            vintage = {interiorId = 239105, ipl = "ex_dt1_11_office_03a", safe = "ex_prop_safedoor_office3a"},
+            contrast = {interiorId = 239361, ipl = "ex_dt1_11_office_03a", safe = "ex_prop_safedoor_office3a"},
+            rich = {interiorId = 239617, ipl = "ex_dt1_11_office_03a", safe = "ex_prop_safedoor_office3a"},
+            cool = {interiorId = 239873, ipl = "ex_dt1_11_office_03a", safe = "ex_prop_safedoor_office3a"},
             ice = {interiorId = 240129, ipl = "ex_dt1_11_office_03a", safe = "ex_prop_safedoor_office3a"},
+            conservative = {interiorId = 240385, ipl = "ex_dt1_11_office_03a", safe = "ex_prop_safedoor_office3a"},
+            polished = {interiorId = 240641, ipl = "ex_dt1_11_office_03a", safe = "ex_prop_safedoor_office3a"
         },
         Set = function(style, refresh)
             if (refresh == nil) then refresh = false end
