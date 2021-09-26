@@ -16,14 +16,15 @@ body {
     width: 30px;
     margin: 0 auto;
     margin-bottom: 15px;
-    color: red;
+    color: #c93d46;
+    box-shadow: 1px rgba(0,0,0,0.16);
     z-index: 1;
     transition: 0.2s;
     /* border: 2px solid yellow; */
 }
 
 .marker:hover {
-    color: rgb(30, 255, 0);
+    color: #a8333b;
 }
 
 .container {
@@ -70,7 +71,7 @@ img {
 }
 
 .content-container button {
-    background-color: #161923;
+    background-color: #182316;
     border: 3px solid #f40552;
     color: white;
     margin-top: 10px;
@@ -91,8 +92,8 @@ img {
 
 .buttonlast button {
     font-family: 'Montserrat', sans-serif;
-    background-color: #161923;
-    border: 3px solid #f40552;
+    background-color: #0032d4;
+    border: 3px solid #292627;
     color: white;
     margin-top: 10px;
     padding: 10px 40px;
@@ -380,3 +381,33 @@ img {
         z-index: 1000;
     }
 }
+
+.hovertext {
+    position: relative;
+    /* border-bottom: 1px dotted black; */
+  }
+  
+  .hovertext:before {
+    content: attr(data-hover);
+    visibility: hidden;
+    opacity: 0;
+    width: 160px;
+    background-color: #2b2e30;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px 10px;
+    transition: opacity 1s ease-in-out;
+  
+    margin-left: 140px;
+    position: relative;
+    /* z-index: 1; */
+    /* left: 0; */
+    margin-top: 30px;
+    /* top: 110%; */
+  }
+  
+  .hovertext:hover:before {
+    opacity: 1;
+    visibility: visible;
+  }

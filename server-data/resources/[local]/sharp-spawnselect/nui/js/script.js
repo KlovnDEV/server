@@ -1,7 +1,7 @@
 function displayShowContent(element){
     if (element.classList.contains("selected")){
         element.classList.remove("selected")
-        console.log("wow")
+        // console.log("wow")
     }
     else {
         var curr_sel = document.querySelector('.content-container.selected');
@@ -13,57 +13,57 @@ function displayShowContent(element){
 function LastLocation(){
     $.post("http://sharp-spawnselect/LastLocation", JSON.stringify({}));
     $.post("http://sharp-spawnselect/SpawnPlayer", JSON.stringify({}));
-    console.log("LastLocation")
-    $("body").fadeOut(2200)
+    // console.log("LastLocation")
+    $("body").fadeOut(300)
 }
 
 function SpawnTorget(){
     $.post("http://sharp-spawnselect/SpawnTorget", JSON.stringify({}));
     $.post("http://sharp-spawnselect/SpawnPlayer", JSON.stringify({}));
-    console.log("SpawnTorget")
-    $("body").fadeOut(2200)
+    // console.log("SpawnTorget")
+    $("body").fadeOut(300)
 }
 
 function SpawnMRPD(){
     $.post("http://sharp-spawnselect/SpawnMRPD", JSON.stringify({}));
     $.post("http://sharp-spawnselect/SpawnPlayer", JSON.stringify({}));
-    console.log("SpawnMRPD")
-    $("body").fadeOut(2200)
+    // console.log("SpawnMRPD")
+    $("body").fadeOut(300)
 }
 
 function SpawnPink(){
     $.post("http://sharp-spawnselect/SpawnPink", JSON.stringify({}));
     $.post("http://sharp-spawnselect/SpawnPlayer", JSON.stringify({}));
-    console.log("SpawnPink")
-    $("body").fadeOut(2200)
+    // console.log("SpawnPink")
+    $("body").fadeOut(300)
 }
 
 function SpawnTrondheim(){
     $.post("http://sharp-spawnselect/SpawnTrondheim", JSON.stringify({}));
     $.post("http://sharp-spawnselect/SpawnPlayer", JSON.stringify({}));
-    console.log("SpawnTrondheim")
-    $("body").fadeOut(2200)
+    // console.log("SpawnTrondheim")
+    $("body").fadeOut(300)
 }
 
 function SpawnTromso(){
     $.post("http://sharp-spawnselect/SpawnTromso", JSON.stringify({}));
     $.post("http://sharp-spawnselect/SpawnPlayer", JSON.stringify({}));
-    console.log("SpawnTromso")
-    $("body").fadeOut(2200)
+    // console.log("SpawnTromso")
+    $("body").fadeOut(300)
 }
 
 function SpawnStrandmotel(){
     $.post("http://sharp-spawnselect/SpawnStrandmotel", JSON.stringify({}));
     $.post("http://sharp-spawnselect/SpawnPlayer", JSON.stringify({}));
-    console.log("SpawnStrandmotel")
-    $("body").fadeOut(2200)
+    // console.log("SpawnStrandmotel")
+    $("body").fadeOut(300)
 }
 
 function SpawnGardermoen(){
     $.post("http://sharp-spawnselect/SpawnGardermoen", JSON.stringify({}));
     $.post("http://sharp-spawnselect/SpawnPlayer", JSON.stringify({}));
-    console.log("SpawnGardermoen")
-    $("body").fadeOut(2200)
+    // console.log("SpawnGardermoen")
+    $("body").fadeOut(300)
 }
 
 

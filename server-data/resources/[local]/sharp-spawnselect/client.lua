@@ -237,7 +237,7 @@ function SpawnPlayer(Location)
     ClearScreen()
     Citizen.Wait(0)
     ClearScreen()
-    DoScreenFadeIn(500)
+    DoScreenFadeIn(50)
     while not IsScreenFadedIn() do
         Citizen.Wait(0)
         ClearScreen()
@@ -262,7 +262,6 @@ function SpawnPlayer(Location)
             break
         end
     end
-    
     ClearDrawOrigin()
 end
 
@@ -283,5 +282,4 @@ RegisterNetEvent("spawnselector:closeNui")
 AddEventHandler("spawnselector:closeNui", function()
     SetNuiFocus(false, false)
     SendNUIMessage({ Action = "CLOSE_MENU" })
-    
 end)
