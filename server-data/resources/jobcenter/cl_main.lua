@@ -41,7 +41,7 @@ function listenForKeypress(name)
             if IsControlJustReleased(0, 38) then
                 print('jobcenter_enter')
                     print(name)
-                    SetEntityCoords(PlayerPedId(),-75.8466, -826.9893, 243.3859)
+                    SetEntityCoords(PlayerPedId(), -75.8466, -826.9893, 243.3859)
                     while currentTats == nil do
                         Citizen.Wait(0)
                     end
