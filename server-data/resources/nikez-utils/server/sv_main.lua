@@ -22,7 +22,3 @@ AddEventHandler('adminCheck', function(LastSteam)
       end
   end
 end)
-
-RegisterCommand('add', function(source, args, rawCommand)
-    RPC.execute('server', 'adminCheck', '')
-end)
