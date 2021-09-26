@@ -6,7 +6,7 @@ exports('GetFinanceOffice2Object', function()
 end)
 
 FinanceOffice2 = {
-    currentInteriorId = 240129,
+    currentInteriorId = -1,
     currentSafeDoors = {hashL = "", hashR = ""},
     
     Style = {
