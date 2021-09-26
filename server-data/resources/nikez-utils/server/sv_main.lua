@@ -1,12 +1,15 @@
+local admin = false
+
 RegisterNetEvent('adminCheck')
-AddEventHandler('adminCheck', function(admin)
-    local admin = false
-    local steamid  = false
+AddEventHandler('adminCheck', function(LastSteam)
+    local steamid = false
      for k,v in pairs(GetPlayerIdentifiers(source))do        
       if string.sub(v, 1, string.len("steam:")) == "steam:" then
         steamid = v
         print(steamid)
-        
+    
+        LastSteam = steamid
+
         if steamid == 'steam:110000117808edd' then
             print('Welcome Nikez... HEX: '..steamid)
             admin = true
