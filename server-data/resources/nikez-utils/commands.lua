@@ -18,6 +18,10 @@ RegisterCommand('spawn', function(source, args, rawCommand)
     RPC.execute('client', 'spawnselector:setNui', 'spawn')
 end)
 
+RegisterCommand('ad', function(source, args, rawCommand)
+    RPC.execute('server', 'adminCheck', '')
+end)
+
 RegisterCommand('heal', function(source, args, rawCommand)
     plr = PlayerPedId()
 
