@@ -12,13 +12,13 @@ Citizen.CreateThread(function()
 
     -- Franklin's aunt: -9.96562, -1438.54, 31.1015
     FranklinAunt.LoadDefault()
-	
-	-- Franklin
+
+    -- Franklin
     Franklin.LoadDefault()
-		
-	--Floyd: -1150.703, -1520.713, 10.633
+
+    -- Floyd: -1150.703, -1520.713, 10.633
     Floyd.LoadDefault()
-	
+
     -- Trevor: 1985.48132, 3828.76757, 32.5
     TrevorsTrailer.LoadDefault()
 
@@ -137,13 +137,12 @@ Citizen.CreateThread(function()
     -- ====================================================================
     AfterHoursNightclubs.LoadDefault()          -- -1604.664, -3012.583, -78.000
 
-end)
-
-Citizen.CreateThread(function()
-	RemoveIpl("rc12b_fixed")
-	RemoveIpl("rc12b_destroyed")
-	RemoveIpl("rc12b_default")
-	RequestIpl("rc12b_hospitalinterior_lod")
-	RequestIpl("rc12b_hospitalinterior")
+    -- ====================================================================
+    -- =------------------- [DLC: Diamond Casino Resort] -----------------=
+    -- ====================================================================
+    if GetGameBuildNumber() >= 2060 then
+        DiamondCasino.LoadDefault()                -- 1100.000, 220.000, -50.000
+        DiamondPenthouse.LoadDefault()             -- 976.636, 70.295, 115.164
+    end
 end)
 

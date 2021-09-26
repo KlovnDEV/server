@@ -6,7 +6,7 @@ exports('GetFinanceOffice2Object', function()
 end)
 
 FinanceOffice2 = {
-    currentInteriorId = 240129,
+    currentInteriorId = -1,
     currentSafeDoors = {hashL = "", hashR = ""},
     
     Style = {
@@ -19,7 +19,7 @@ FinanceOffice2 = {
             cool = {interiorId = 239873, ipl = "ex_dt1_11_office_02c", safe = "ex_prop_safedoor_office2a"},
             ice = {interiorId = 240129, ipl = "ex_dt1_11_office_03a", safe = "ex_prop_safedoor_office3a"},
             conservative = {interiorId = 240385, ipl = "ex_dt1_11_office_03b", safe = "ex_prop_safedoor_office3a"},
-            polished = {interiorId = 240641, ipl = "ex_dt1_11_office_03c", safe = "ex_prop_safedoor_office3c"
+            polished = {interiorId = 240641, ipl = "ex_dt1_11_office_03c", safe = "ex_prop_safedoor_office3c"}
         },
         Set = function(style, refresh)
             if (refresh == nil) then refresh = false end

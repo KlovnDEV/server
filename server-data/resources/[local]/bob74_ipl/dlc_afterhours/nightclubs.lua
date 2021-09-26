@@ -33,7 +33,7 @@ AfterHoursNightclubs = {
             end
         },
         Style = {
-            trad = "Int01_ba_Style02", edgy = "Int01_ba_Style02", glam = "Int01_ba_Style02",
+            trad = "Int01_ba_Style01", edgy = "Int01_ba_Style02", glam = "Int01_ba_Style03",
             Set = function(style, refresh)
                 AfterHoursNightclubs.Interior.Style.Clear(false)
                 SetIplPropState(AfterHoursNightclubs.interiorId, style, true, refresh)
@@ -41,14 +41,13 @@ AfterHoursNightclubs = {
             Clear = function(refresh)
                 for key, value in pairs(AfterHoursNightclubs.Interior.Style) do
                     if (type(value) == "string") then
-                        SetIplPropState(AfterHoursNightclubs.interiorId, value, true, refresh)
+                        SetIplPropState(AfterHoursNightclubs.interiorId, value, false, refresh)
                     end
                 end
             end
         },
         Podium = {
-            --none = "",
-            trad = "Int01_ba_style03_podium", edgy = "Int01_ba_style03_podium", glam = "Int01_ba_style03_podium",
+            none = "", trad = "Int01_ba_style01_podium", edgy = "Int01_ba_style02_podium", glam = "Int01_ba_style03_podium",
             Set = function(podium, refresh)
                 AfterHoursNightclubs.Interior.Podium.Clear(false)
                 SetIplPropState(AfterHoursNightclubs.interiorId, podium, true, refresh)
@@ -56,40 +55,37 @@ AfterHoursNightclubs = {
             Clear = function(refresh)
                 for key, value in pairs(AfterHoursNightclubs.Interior.Podium) do
                     if (type(value) == "string") then
-                        SetIplPropState(AfterHoursNightclubs.interiorId, value, true, refresh)
+                        SetIplPropState(AfterHoursNightclubs.interiorId, value, false, refresh)
                     end
                 end
             end
         },
         Speakers = {
-            --none = "",
-            upgrade = {"Int01_ba_equipment_setup", "Int01_ba_equipment_upgrade"},
+            none = "", basic = "Int01_ba_equipment_setup", upgrade = {"Int01_ba_equipment_setup", "Int01_ba_equipment_upgrade"},
             Set = function(speakers, refresh)
-                AfterHoursNightclubs.Interior.Speakers.Clear(true)
+                AfterHoursNightclubs.Interior.Speakers.Clear(false)
                 SetIplPropState(AfterHoursNightclubs.interiorId, speakers, true, refresh)
             end,
             Clear = function(refresh)
                 for key, value in pairs(AfterHoursNightclubs.Interior.Speakers) do
                     if (type(value) == "string") then
-                        SetIplPropState(AfterHoursNightclubs.interiorId, value, true, refresh)
+                        SetIplPropState(AfterHoursNightclubs.interiorId, value, false, refresh)
                     end
                 end
             end
         },
         Security = {
-            --off = "",
-            on = "Int01_ba_security_upgrade",
+            off = "", on = "Int01_ba_security_upgrade",
             Set = function(security, refresh)
                 AfterHoursNightclubs.Interior.Security.Clear(false)
                 SetIplPropState(AfterHoursNightclubs.interiorId, security, true, refresh)
             end,
             Clear = function(refresh)
-                SetIplPropState(AfterHoursNightclubs.interiorId, AfterHoursNightclubs.Interior.Security.on, true, refresh)
+                SetIplPropState(AfterHoursNightclubs.interiorId, AfterHoursNightclubs.Interior.Security.on, false, refresh)
             end
         },
         Turntables = {
-            --none = "",
-            style01 = "Int01_ba_dj03", style02 = "Int01_ba_dj03", style03 = "Int01_ba_dj03", style04 = "Int01_ba_dj03",
+            none = "", style01 = "Int01_ba_dj01", style02 = "Int01_ba_dj02", style03 = "Int01_ba_dj03", style04 = "Int01_ba_dj04",
             Set = function(turntables, refresh)
                 AfterHoursNightclubs.Interior.Turntables.Clear(false)
                 if turntables ~= "" then
@@ -101,14 +97,14 @@ AfterHoursNightclubs = {
             Clear = function(refresh)
                 for key, value in pairs(AfterHoursNightclubs.Interior.Turntables) do
                     if (type(value) == "string") then
-                        SetIplPropState(AfterHoursNightclubs.interiorId, value, true, refresh)
+                        SetIplPropState(AfterHoursNightclubs.interiorId, value, false, refresh)
                     end
                 end
             end
         },
         Lights = {
             Droplets = {
-                yellow = "DJ_02_Lights_01", green = "DJ_02_Lights_02", white = "DJ_02_Lights_03", purple = "DJ_02_Lights_04",
+                yellow = "DJ_01_Lights_01", green = "DJ_02_Lights_01", white = "DJ_03_Lights_01", purple = "DJ_04_Lights_01",
                 Set = function(light, refresh)
                     AfterHoursNightclubs.Interior.Lights.Droplets.Clear(false)
                     SetIplPropState(AfterHoursNightclubs.interiorId, light, true, refresh)
@@ -116,13 +112,13 @@ AfterHoursNightclubs = {
                 Clear = function(refresh)
                     for key, value in pairs(AfterHoursNightclubs.Interior.Lights.Droplets) do
                         if (type(value) == "string") then
-                            SetIplPropState(AfterHoursNightclubs.interiorId, value, true, refresh)
+                            SetIplPropState(AfterHoursNightclubs.interiorId, value, false, refresh)
                         end
                     end
                 end
             },
             Neons = {
-                yellow = "DJ_03_Lights_01", white = "DJ_03_Lights_02", purple = "DJ_03_Lights_03", cyan = "DJ_03_Lights_04",
+                yellow = "DJ_01_Lights_02", white = "DJ_02_Lights_02", purple = "DJ_03_Lights_02", cyan = "DJ_04_Lights_02",
                 Set = function(light, refresh)
                     AfterHoursNightclubs.Interior.Lights.Neons.Clear(false)
                     SetIplPropState(AfterHoursNightclubs.interiorId, light, true, refresh)
@@ -130,13 +126,13 @@ AfterHoursNightclubs = {
                 Clear = function(refresh)
                     for key, value in pairs(AfterHoursNightclubs.Interior.Lights.Neons) do
                         if (type(value) == "string") then
-                            SetIplPropState(AfterHoursNightclubs.interiorId, value, true, refresh)
+                            SetIplPropState(AfterHoursNightclubs.interiorId, value, false, refresh)
                         end
                     end
                 end
             },
             Bands = {
-                yellow = "DJ_03_Lights_01", green = "DJ_03_Lights_01", white = "DJ_03_Lights_01", cyan = "DJ_03_Lights_01",
+                yellow = "DJ_01_Lights_03", green = "DJ_02_Lights_03", white = "DJ_03_Lights_03", cyan = "DJ_04_Lights_03",
                 Set = function(light, refresh)
                     AfterHoursNightclubs.Interior.Lights.Bands.Clear(false)
                     SetIplPropState(AfterHoursNightclubs.interiorId, light, true, refresh)
@@ -144,7 +140,7 @@ AfterHoursNightclubs = {
                 Clear = function(refresh)
                     for key, value in pairs(AfterHoursNightclubs.Interior.Lights.Bands) do
                         if (type(value) == "string") then
-                            SetIplPropState(AfterHoursNightclubs.interiorId, value, true, refresh)
+                            SetIplPropState(AfterHoursNightclubs.interiorId, value, false, refresh)
                         end
                     end
                 end
@@ -158,7 +154,7 @@ AfterHoursNightclubs = {
                 Clear = function(refresh)
                     for key, value in pairs(AfterHoursNightclubs.Interior.Lights.Lasers) do
                         if (type(value) == "string") then
-                            SetIplPropState(AfterHoursNightclubs.interiorId, value, true, refresh)
+                            SetIplPropState(AfterHoursNightclubs.interiorId, value, false, refresh)
                         end
                     end
                 end
@@ -176,7 +172,7 @@ AfterHoursNightclubs = {
             end
         },
         Booze = {
-            A = "Int01_ba_booze_02", B = "Int01_ba_booze_02", C = "Int01_ba_booze_02",
+            A = "Int01_ba_booze_01", B = "Int01_ba_booze_02", C = "Int01_ba_booze_03",
             Enable = function (booze, state, refresh)
                 if (IsTable(booze)) then
                     for key, value in pairs(booze) do
@@ -192,8 +188,8 @@ AfterHoursNightclubs = {
         Trophy = {
             Color = {bronze = 0, silver = 1, gold = 2},
             number1 = "Int01_ba_trophy01",
-            battler = "Int01_ba_trophy01",
-            dancer = "Int01_ba_trophy01",
+            battler = "Int01_ba_trophy02",
+            dancer = "Int01_ba_trophy03",
             Enable = function (trophy, state, color, refresh)
                 SetIplPropState(AfterHoursNightclubs.interiorId, trophy, state, refresh)
                 SetInteriorPropColor(AfterHoursNightclubs.interiorId, trophy, color)
@@ -207,7 +203,7 @@ AfterHoursNightclubs = {
                 {pos = {x = -1597.134, y = -3008.2, z = -79.99}, rot = {x = 0.0, y = -10.0, z = -122.53}},
                 {pos = {x = -1589.966, y = -3008.518, z = -79.99}, rot = {x = 0.0, y = -10.0, z = -166.97}}
             },
-            Set = function (state)
+            Enable = function(state)
                 if (state) then
                     RequestNamedPtfxAsset("scr_ba_club")
                     while not HasNamedPtfxAssetLoaded("scr_ba_club") do
@@ -215,10 +211,10 @@ AfterHoursNightclubs = {
                     end
                     for key, emitter in pairs(AfterHoursNightclubs.Interior.DryIce.Emitters) do
                         UseParticleFxAssetNextCall("scr_ba_club")
-                        StartParticleFxLoopedAtCoord("scr_ba_club_smoke_machine", emitter.pos.x, emitter.pos.y, emitter.pos.z, emitter.rot.x, emitter.rot.y, emitter.rot.z, AfterHoursNightclubs.Interior.DryIce.scale, true, true, true, true)
+                        StartParticleFxLoopedAtCoord("scr_ba_club_smoke_machine", emitter.pos.x, emitter.pos.y, emitter.pos.z, emitter.rot.x, emitter.rot.y, emitter.rot.z, AfterHoursNightclubs.Interior.DryIce.scale, false, false, false, true)
                     end
                 else
-                    local radius = 2.0
+                    local radius = 1.0
                     for key, emitter in pairs(AfterHoursNightclubs.Interior.DryIce.Emitters) do
                         RemoveParticleFxInRange(emitter.pos.x, emitter.pos.y, emitter.pos.z, radius)
                     end
@@ -230,10 +226,10 @@ AfterHoursNightclubs = {
             worklamps = "Int01_ba_Worklamps",           -- Work lamps + trash
             truck = "Int01_ba_deliverytruck",           -- Truck parked in the garage
             dryIce = "Int01_ba_dry_ice",                -- Dry ice machines (no effects)
-            lightRigsOff = "light_rigs_on",             -- All light rigs at once but turned off
-            roofLightsOff = "Int01_ba_lightgrid_03",    -- Fake lights
+            lightRigsOff = "light_rigs_off",            -- All light rigs at once but turned off
+            roofLightsOff = "Int01_ba_lightgrid_01",    -- Fake lights
             floorTradLights = "Int01_ba_trad_lights",   -- Floor lights meant to go with the trad style
-            chest = "Int01_ba_trophy03",                -- Chest on the VIP desk
+            chest = "Int01_ba_trophy04",                -- Chest on the VIP desk
             vaultAmmunations = "Int01_ba_trophy05",     -- (inside vault) Ammunations
             vaultMeth = "Int01_ba_trophy07",            -- (inside vault) Meth bag
             vaultFakeID = "Int01_ba_trophy08",          -- (inside vault) Fake ID
@@ -495,7 +491,7 @@ AfterHoursNightclubs = {
 
         AfterHoursNightclubs.Interior.Security.Set(AfterHoursNightclubs.Interior.Security.on)
         
-        AfterHoursNightclubs.Interior.Turntables.Set(AfterHoursNightclubs.Interior.Turntables.style02)
+        AfterHoursNightclubs.Interior.Turntables.Set(AfterHoursNightclubs.Interior.Turntables.style01)
         AfterHoursNightclubs.Interior.Lights.Bands.Set(AfterHoursNightclubs.Interior.Lights.Bands.cyan)
 
         AfterHoursNightclubs.Interior.Bar.Enable(true)
@@ -549,4 +545,3 @@ AfterHoursNightclubs = {
         AfterHoursNightclubs.Vespucci.Posters.Enable(AfterHoursNightclubs.Posters.forSale, false)
     end
 }
-
