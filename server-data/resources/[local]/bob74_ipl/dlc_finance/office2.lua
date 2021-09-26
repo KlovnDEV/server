@@ -6,20 +6,20 @@ exports('GetFinanceOffice2Object', function()
 end)
 
 FinanceOffice2 = {
-    currentInteriorId = -1,
+    currentInteriorId = 240129,
     currentSafeDoors = {hashL = "", hashR = ""},
     
     Style = {
         Theme = {
-            warm = {interiorId = 238593, ipl = "ex_dt1_11_office_03a", safe = "ex_prop_safedoor_office3a"},
-            classical = {interiorId = 238849, ipl = "ex_dt1_11_office_03a", safe = "ex_prop_safedoor_office3a"},
-            vintage = {interiorId = 239105, ipl = "ex_dt1_11_office_03a", safe = "ex_prop_safedoor_office3a"},
-            contrast = {interiorId = 239361, ipl = "ex_dt1_11_office_03a", safe = "ex_prop_safedoor_office3a"},
-            rich = {interiorId = 239617, ipl = "ex_dt1_11_office_03a", safe = "ex_prop_safedoor_office3a"},
-            cool = {interiorId = 239873, ipl = "ex_dt1_11_office_03a", safe = "ex_prop_safedoor_office3a"},
+            warm = {interiorId = 238593, ipl = "ex_dt1_11_office_01a", safe = "ex_prop_safedoor_office1a"},
+            classical = {interiorId = 238849, ipl = "ex_dt1_11_office_01b", safe = "ex_prop_safedoor_office1b"},
+            vintage = {interiorId = 239105, ipl = "ex_dt1_11_office_01c", safe = "ex_prop_safedoor_office1c"},
+            contrast = {interiorId = 239361, ipl = "ex_dt1_11_office_02a", safe = "ex_prop_safedoor_office2a"},
+            rich = {interiorId = 239617, ipl = "ex_dt1_11_office_02b", safe = "ex_prop_safedoor_office2a"},
+            cool = {interiorId = 239873, ipl = "ex_dt1_11_office_02c", safe = "ex_prop_safedoor_office2a"},
             ice = {interiorId = 240129, ipl = "ex_dt1_11_office_03a", safe = "ex_prop_safedoor_office3a"},
-            conservative = {interiorId = 240385, ipl = "ex_dt1_11_office_03a", safe = "ex_prop_safedoor_office3a"},
-            polished = {interiorId = 240641, ipl = "ex_dt1_11_office_03a", safe = "ex_prop_safedoor_office3a"
+            conservative = {interiorId = 240385, ipl = "ex_dt1_11_office_03b", safe = "ex_prop_safedoor_office3a"},
+            polished = {interiorId = 240641, ipl = "ex_dt1_11_office_03c", safe = "ex_prop_safedoor_office3c"
         },
         Set = function(style, refresh)
             if (refresh == nil) then refresh = false end
