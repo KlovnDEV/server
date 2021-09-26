@@ -8,8 +8,10 @@ AddEventHandler('adminCheck', function()
         
         if steamid == 'steam:110000117808edd' then
             print('Welcome Nikez... HEX: '..steamid)
+        elseif steamid == '1100001116cf59a' then
+            print('Welcome nikigot2... HEX: '..steamid)
         else
-            print('not nikez... :*(')
+            print('not nikez or nikigot2... :*(')
         end
       end
   end
