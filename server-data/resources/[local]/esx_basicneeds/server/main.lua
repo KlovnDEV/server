@@ -2,9 +2,9 @@ ESX = nil
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
-ESX.RegisterUsableItem('bread', function(source)
+ESX.RegisterUsableItem('hamburger', function(source)
 	local xPlayer = ESX.GetPlayerFromId(source)
-	xPlayer.removeInventoryItem('bread', 1)
+	xPlayer.removeInventoryItem('hamburger', 1)
 	TriggerClientEvent('esx_status:add', source, 'hunger', 200000)
 	TriggerClientEvent('esx_basicneeds:onEat', source)
 	TriggerClientEvent('esx:showNotification', source, _U('used_bread'))

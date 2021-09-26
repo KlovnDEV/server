@@ -203,20 +203,20 @@ window.addEventListener("message", function(event) {
         $("#StressIndicator").fadeIn();
     }
 
-// AUTOMATICS
-    if (data.hunger == 100) {
-        $("#HungerIndicator").fadeOut();
-    }
-    else if (data.hunger < 100) 
-    $("#HungerIndicator").fadeIn();{
-    }
-    
+// AUTOMATICS    
     if (data.hp == 100) {
         $("#HealthIndicator").fadeOut();
     }
     else if (data.hp < 100 || data.death == true) 
         $("#HealthIndicator").fadeIn();{
     }
+
+    if (data.armor == 100) {
+        $("#ArmorIndicator").fadeOut();
+        }
+        else if (data.armor < 100) 
+        $("#ArmorIndicator").fadeIn();{
+        }
 
     if (data.thirst == 100) {
         $("#ThirstIndicator").fadeOut();

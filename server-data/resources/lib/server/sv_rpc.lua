@@ -23,3 +23,15 @@ RPC = {}
 -- AddEventHandler('log', function(type, event, params, callID)
     -- log(type, event, params, callID)
 -- end)
+
+RegisterNetEvent('gethunger', function(source)
+    local xPlayer = ESX.GetPlayerFromId(source)
+	TriggerClientEvent('esx_status:add', source, 'hunger', 200000)
+	TriggerClientEvent('esx_basicneeds:onEat', source)
+end)
+
+RegisterNetEvent('getthirst', function(source)
+	local xPlayer = ESX.GetPlayerFromId(source)
+	TriggerClientEvent('esx_status:add', source, 'thirst', 200000)
+	TriggerClientEvent('esx_basicneeds:onDrink', source)
+end)

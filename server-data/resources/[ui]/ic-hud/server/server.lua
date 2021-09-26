@@ -65,35 +65,35 @@ AddEventHandler('server:alterStress',function(positive, alteredValue)
 end)
 
 
-RegisterServerEvent("police:update:hud")
-AddEventHandler("police:update:hud", function(health, armour, thirst, hunger)
-    local src = source
-	local user = exports["np-base"]:getModule("Player"):GetUser(src)
-	local characterId = user:getCurrentCharacter().id
-	if user ~= false then
-		meta = { 
-			["health"] = health,
-			["armour"] = armour,
-			["thirst"] = thirst,
-			["hunger"] = hunger
-		}
+-- RegisterServerEvent("police:update:hud")
+-- AddEventHandler("police:update:hud", function(health, armour, thirst, hunger)
+--     local src = source
+-- 	-- local user = exports["np-base"]:getModule("Player"):GetUser(src)
+-- 	local characterId = user:getCurrentCharacter().id
+-- 	if user ~= false then
+-- 		meta = { 
+-- 			["health"] = health,
+-- 			["armour"] = armour,
+-- 			["thirst"] = thirst,
+-- 			["hunger"] = hunger
+-- 		}
 
-		local encode = json.encode(meta)
-		exports.ghmattimysql:execute('UPDATE characters SET metaData = ? WHERE id = ?', {encode, characterId})
-	end
-end)
+-- 		local encode = json.encode(meta)
+-- 		exports.ghmattimysql:execute('UPDATE characters SET metaData = ? WHERE id = ?', {encode, characterId})
+-- 	end
+-- end)
 
-RegisterServerEvent('police:SetMeta')
-AddEventHandler('police:SetMeta', function()
-    local src = source
-	local user = exports["np-base"]:getModule("Player"):GetUser(src)
-	local cid = user:getCurrentCharacter().id
-	exports.ghmattimysql:execute("SELECT * FROM characters WHERE id = ?", {cid}, function(result)
-        TriggerClientEvent("police:setClientMeta", src, json.decode(result[1].metaData))
-		TriggerClientEvent('client:updateStress', src, result[1].stress_level)
-		TriggerClientEvent("iconic-hud:EnableHud", src)
-	end)
-end)
+-- RegisterServerEvent('police:SetMeta')
+-- AddEventHandler('police:SetMeta', function()
+--     local src = source
+-- 	local user = exports["np-base"]:getModule("Player"):GetUser(src)
+-- 	local cid = user:getCurrentCharacter().id
+-- 	exports.ghmattimysql:execute("SELECT * FROM characters WHERE id = ?", {cid}, function(result)
+--         TriggerClientEvent("police:setClientMeta", src, json.decode(result[1].metaData))
+-- 		TriggerClientEvent('client:updateStress', src, result[1].stress_level)
+-- 		TriggerClientEvent("iconic-hud:EnableHud", src)
+-- 	end)
+-- end)
 
 
 RegisterServerEvent('police:setEmoteData')

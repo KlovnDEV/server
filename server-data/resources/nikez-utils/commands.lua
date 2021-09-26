@@ -19,5 +19,11 @@ RegisterCommand('spawn', function(source, args, rawCommand)
 end)
 
 RegisterCommand('heal', function(source, args, rawCommand)
-    RPC.execute('client', 'healDumbass', '')
+    plr = PlayerPedId()
+
+    if args[1] == 'h' then
+        SetEntityHealth(plr, 200)
+    elseif args[1] == 'b' then
+        SetPedArmour(plr, 60)
+    end
 end)

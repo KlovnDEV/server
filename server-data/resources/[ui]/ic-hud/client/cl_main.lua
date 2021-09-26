@@ -520,10 +520,10 @@ function Fwv(entity)
   return { x = math.cos(hr) * 2.0, y = math.sin(hr) * 2.0 }
 end
 
-RegisterNetEvent('hud:saveCurrentMeta')
-AddEventHandler('hud:saveCurrentMeta', function()
-	TriggerServerEvent("police:update:hud",GetEntityHealth(PlayerPedId()),GetPedArmour(PlayerPedId()),currentValues["thirst"],currentValues["hunger"],currentValues["armor"])
-end)
+-- RegisterNetEvent('hud:saveCurrentMeta')
+-- AddEventHandler('hud:saveCurrentMeta', function()
+	-- TriggerServerEvent("police:update:hud",GetEntityHealth(PlayerPedId()),GetPedArmour(PlayerPedId()),currentValues["thirst"],currentValues["hunger"],currentValues["armor"])
+-- end)
 
 -- Citizen.CreateThread(function()
 --     while true do
