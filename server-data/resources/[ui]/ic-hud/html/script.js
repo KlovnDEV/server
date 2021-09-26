@@ -250,7 +250,7 @@ window.addEventListener("message", function(event) {
     } else if (data.armor < 25) {
         ArmorIndicator.path.setAttribute("stroke", "rgb(221, 81, 0)");
         ArmorIndicator.trail.setAttribute("stroke", 'rgb(244, 0, 0, .45)');
-    } else if (data.armor > 95) {
+    } else if (data.armor > 25) {
         ArmorIndicator.path.setAttribute("stroke", "rgb(21, 101, 172)");
         ArmorIndicator.trail.setAttribute("stroke", 'rgb(21, 101, 172, .45)');
     }
@@ -268,7 +268,7 @@ window.addEventListener("message", function(event) {
     } else if (data.thirst < 25) {
         ThirstIndicator.path.setAttribute("stroke", "rgb(221, 81, 0)");
         ThirstIndicator.trail.setAttribute("stroke", 'rgb(244, 0, 0, .45)');
-    } else if (data.thirst > 99) {
+    } else if (data.thirst > 25) {
         ThirstIndicator.path.setAttribute("stroke", "rgb(2, 119, 189)");
         ThirstIndicator.trail.setAttribute("stroke", 'rgb(2, 119, 189, .45)');
     }

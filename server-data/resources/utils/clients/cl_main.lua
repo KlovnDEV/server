@@ -53,6 +53,21 @@ AddEventHandler('server-utilities:teleportMarker', function()
     end
 end)
 
+RegisterNetEvent('server-utilities:fixVehicle')
+AddEventHandler('server-utilities:fixVehicle', function()
+local ped = PlayerPedId()
+if (DoesEntityExist(ped) and not IsEntityDead(ped)) then
+    if (IsPedSittingInAnyVehicle(ped)) then
+        local vehicle = GetVehiclePedIsIn( ped, false)
+        if (GetPedInVehicleSeat(vehicle, -1) == ped) then
+        SetVehicleEngineHealth(vehicle, 1000)
+        SetVehicleEngineOn(vehicle, true, true)
+        SetVehicleFixed(vehicle)
+          end
+       end
+    end
+end)
+
 RegisterNetEvent('getId')
 AddEventHandler('getId', function(id)
     plr = PlayerPedId()

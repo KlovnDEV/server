@@ -3,6 +3,7 @@ TriggerEvent('chat:addSuggestion', '/sit', 'Sit in spawned car')
 TriggerEvent('chat:addSuggestion', '/car', 'Spawn Car [args]')
 TriggerEvent('chat:addSuggestion', '/coords', 'Player Coordinates')
 TriggerEvent('chat:addSuggestion', '/id', 'Your ID')
+TriggerEvent('chat:addSuggestion', '/fix', 'Fix vehicle')
 TriggerEvent('chat:addSuggestion', '/debug', 'Enable/Disable Debug')
 
 RegisterCommand('coords', function(source, args, rawCommand)
@@ -35,6 +36,10 @@ end)
 
 RegisterCommand('id', function(source, args, rawCommand)
     RPC.execute('client', 'getId', '')
+end)
+
+RegisterCommand('fix', function(source, args, rawCommand)
+    RPC.execute('client', 'server-utilities:fixVehicle', '')
 end)
 
 RegisterCommand('heal', function(source, args, rawCommand)
