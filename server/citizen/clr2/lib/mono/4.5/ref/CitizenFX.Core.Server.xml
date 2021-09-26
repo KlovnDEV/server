@@ -6670,7 +6670,9 @@
         </member>
         <member name="F:CitizenFX.Core.Native.Hash.GET_ENTITY_COORDS">
             <summary>
-            Gets the current coordinates for a specified entity. This native is used server side when using OneSync. See &lt;a href="#_0x3FEF770D40960D5A" &gt;GET_ENTITY_COORDS&lt;/a&gt; for client side.
+            Gets the current coordinates for a specified entity. This native is used server side when using OneSync.
+            
+            See [GET_ENTITY_COORDS](#\_0x3FEF770D40960D5A) for client side.
             </summary>
         </member>
         <member name="F:CitizenFX.Core.Native.Hash.GET_ENTITY_HEALTH">
@@ -6693,6 +6695,51 @@
             Gets the routing bucket for the specified entity.
             
             Routing buckets are also known as 'dimensions' or 'virtual worlds' in past echoes, however they are population-aware.
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Core.Native.Hash.GET_ENTITY_SPEED">
+            <summary>
+            Gets the current speed of the entity in meters per second.
+            
+            ```
+            To convert to MPH: speed * 2.236936
+            To convert to KPH: speed * 3.6
+            ```
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Core.Native.Hash.GET_GAME_BUILD_NUMBER">
+            <summary>
+            Returns the internal build number of the current game being executed.
+            
+            Possible values:
+            
+            *   FiveM
+                *   1604
+                *   2060
+                *   2189
+                *   2372
+            *   RedM
+                *   1311
+                *   1355
+                *   1436
+            *   LibertyM
+                *   43
+            *   FXServer
+                *   0
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Core.Native.Hash.GET_GAME_NAME">
+            <summary>
+            Returns the current game being executed.
+            
+            Possible values:
+            
+            | Return value | Meaning                        |
+            | ------------ | ------------------------------ |
+            | `fxserver`   | Server-side code ('Duplicity') |
+            | `fivem`      | FiveM for GTA V                |
+            | `libertym`   | LibertyM for GTA IV            |
+            | `redm`       | RedM for Red Dead Redemption 2 |
             </summary>
         </member>
         <member name="F:CitizenFX.Core.Native.Hash.GET_GAME_TIMER">
@@ -6924,6 +6971,22 @@
             Gets the vehicle the specified Ped is/was in depending on bool value. This native is used server side when using OneSync.
             </summary>
         </member>
+        <member name="F:CitizenFX.Core.Native.Hash.GET_VEHICLE_TYPE">
+            <summary>
+            Returns the type of the passed vehicle.
+            
+            ### Vehicle types
+            
+            *   automobile
+            *   bike
+            *   boat
+            *   heli
+            *   plane
+            *   submarine
+            *   trailer
+            *   train
+            </summary>
+        </member>
         <member name="F:CitizenFX.Core.Native.Hash.IS_DUPLICITY_VERSION">
             <summary>
             Gets whether or not this is the CitizenFX server.
@@ -6987,6 +7050,12 @@
         <member name="F:CitizenFX.Core.Native.Hash.NETWORK_GET_FIRST_ENTITY_OWNER">
             <summary>
             Returns the first owner ID of the specified entity.
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Core.Native.Hash.PRINT_STRUCTURED_TRACE">
+            <summary>
+            Prints 'structured trace' data to the server `file descriptor 3` channel. This is not generally useful outside of
+            server monitoring utilities.
             </summary>
         </member>
         <member name="F:CitizenFX.Core.Native.Hash.PROFILER_ENTER_SCOPE">
@@ -7690,18 +7759,6 @@
             12              Add Body Blemishes    0 - 1, 255
             </summary>
         </member>
-        <member name="F:CitizenFX.Core.Native.Hash.SET_PED_INTO_VEHICLE">
-            <summary>
-            Ped: The ped to warp.  
-            vehicle: The vehicle to warp the ped into.  
-            Seat_Index: [-1 is driver seat, -2 first free passenger seat]  
-            Moreinfo of Seat Index  
-            DriverSeat = -1  
-            Passenger = 0  
-            Left Rear = 1  
-            RightRear = 2
-            </summary>
-        </member>
         <member name="F:CitizenFX.Core.Native.Hash.SET_PED_PROP_INDEX">
             <summary>
             This native is used to set prop variation on a ped. Components, drawables and textures IDs are related to the ped model.
@@ -7724,14 +7781,10 @@
         </member>
         <member name="F:CitizenFX.Core.Native.Hash.SET_PED_RANDOM_COMPONENT_VARIATION">
             <summary>
-            p1 is always false in R* scripts; and a quick disassembly seems to indicate that p1 is unused.  
+            p1 is always 0 in R* scripts; and a quick disassembly seems to indicate that p1 is unused.  
             
             List of component/props ID:
-            gtaxscripting.blogspot.com/2016/04/gta-v-peds-component-and-props.html  
-            ```
-            
-            ```
-            NativeDB Parameter 1: int p1
+            gtaxscripting.blogspot.com/2016/04/gta-v-peds-component-and-props.html
             </summary>
         </member>
         <member name="F:CitizenFX.Core.Native.Hash.SET_PED_RANDOM_PROPS">
@@ -7879,11 +7932,9 @@
         </member>
         <member name="F:CitizenFX.Core.Native.Hash.SET_VEHICLE_COLOURS">
             <summary>
-            colorPrimary &amp; colorSecondary are the paint index for the vehicle.  
-            For a list of valid paint indexes, view: pastebin.com/pwHci0xK  
-            -------------------------------------------------------------------------  
-            Use this to get the number of color indices: pastebin.com/RQEeqTSM  
-            Note: minimum color index is 0, maximum color index is (numColorIndices - 1)
+            colorPrimary &amp; colorSecondary are the paint indexes for the vehicle.
+            
+            For a list of valid paint indexes, view: pastebin.com/pwHci0xK
             </summary>
         </member>
         <member name="F:CitizenFX.Core.Native.Hash.SET_VEHICLE_COLOUR_COMBINATION">
@@ -7910,32 +7961,23 @@
         </member>
         <member name="F:CitizenFX.Core.Native.Hash.SET_VEHICLE_DOORS_LOCKED">
             <summary>
-            0 - CARLOCK_NONE
-            1 - CARLOCK_UNLOCKED
-            2 - CARLOCK_LOCKED (locked)
-            3 - CARLOCK_LOCKOUT_PLAYER_ONLY
-            4 - CARLOCK_LOCKED_PLAYER_INSIDE (can get in, can't leave)
-            (maybe, these are leftovers from GTA:VC)
-            5 - CARLOCK_LOCKED_INITIALLY
-            6 - CARLOCK_FORCE_SHUT_DOORS
-            7 - CARLOCK_LOCKED_BUT_CAN_BE_DAMAGED
-            (source: GTA VC miss2 leak, matching constants for 0/2/4, testing)
-            They use 10 in am_mp_property_int, don't know what it does atm.
+            // Source GTA VC miss2 leak, matching constants for 0/2/4, testing
+            // They use 10 in am_mp_property_int, don't know what it does atm.
+            enum eCarLock {
+                CARLOCK_NONE = 0,
+                CARLOCK_UNLOCKED = 1,
+                CARLOCK_LOCKED = 2,
+                CARLOCK_LOCKOUT_PLAYER_ONLY = 3,
+                CARLOCK_LOCKED_PLAYER_INSIDE = 4,
+                CARLOCK_LOCKED_INITIALLY = 5,
+                CARLOCK_FORCE_SHUT_DOORS = 6,
+                CARLOCK_LOCKED_BUT_CAN_BE_DAMAGED = 7
+            };
             </summary>
         </member>
         <member name="F:CitizenFX.Core.Native.Hash.SET_VEHICLE_DOOR_BROKEN">
             <summary>
             See eDoorId declared in [`SET_VEHICLE_DOOR_SHUT`](#\_0x93D9BD300D7789E5)
-            </summary>
-        </member>
-        <member name="F:CitizenFX.Core.Native.Hash.SET_VEHICLE_NUMBER_PLATE_TEXT">
-            <summary>
-            Sets a vehicle's license plate text.  8 chars maximum.  
-            Example:  
-            Ped playerPed = PLAYER::PLAYER_PED_ID();  
-            Vehicle veh = PED::GET_VEHICLE_PED_IS_USING(playerPed);  
-            char *plateText = "KING";  
-            VEHICLE::SET_VEHICLE_NUMBER_PLATE_TEXT(veh, plateText);
             </summary>
         </member>
         <member name="F:CitizenFX.Core.Native.Hash.TASK_COMBAT_PED">
@@ -7959,14 +8001,7 @@
             <summary>
             speed 1.0 = walk, 2.0 = run  
             p5 1 = normal, 3 = teleport to vehicle, 16 = teleport directly into vehicle  
-            p6 is always 0  
-            Usage of seat   
-            -1 = driver  
-            0 = passenger  
-            1 = left back seat  
-            2 = right back seat  
-            3 = outside left  
-            4 = outside right
+            p6 is always 0
             </summary>
         </member>
         <member name="F:CitizenFX.Core.Native.Hash.TASK_GO_TO_COORD_ANY_MEANS">
@@ -8083,18 +8118,6 @@
             TASK::TASK_SHOOT_AT_ENTITY(bg[i], aimedentity, 5000, MISC::GET_HASH_KEY("FIRING_PATTERN_FULL_AUTO"));
             in practical usage, getting the entity the player is aiming at and then task the peds to shoot at the entity, at a button press event would be better.
             Firing Pattern Hash Information: https://pastebin.com/Px036isB
-            </summary>
-        </member>
-        <member name="F:CitizenFX.Core.Native.Hash.TASK_WARP_PED_INTO_VEHICLE">
-            <summary>
-            Seat Numbers  
-            -------------------------------  
-            Driver = -1  
-            Any = -2  
-            Left-Rear = 1  
-            Right-Front = 0  
-            Right-Rear = 2  
-            Extra seats = 3-14(This may differ from vehicle type e.g. Firetruck Rear Stand, Ambulance Rear)
             </summary>
         </member>
         <member name="F:CitizenFX.Core.Native.Hash.TRIGGER_CLIENT_EVENT_INTERNAL">
@@ -8632,7 +8655,8 @@
         </member>
         <member name="M:CitizenFX.Core.Native.API.GetEntityCoords(System.Int32)">
             <summary>
-            Gets the current coordinates for a specified entity. This native is used server side when using OneSync. See &lt;a href="#_0x3FEF770D40960D5A" &gt;GET_ENTITY_COORDS&lt;/a&gt; for client side.
+            Gets the current coordinates for a specified entity. This native is used server side when using OneSync.
+            See [GET_ENTITY_COORDS](#\_0x3FEF770D40960D5A) for client side.
             </summary>
             <param name="entity">
             The entity to get the coordinates from.
@@ -8687,6 +8711,58 @@
             </param>
             <returns>
             The routing bucket ID.
+            </returns>
+        </member>
+        <member name="M:CitizenFX.Core.Native.API.GetEntitySpeed(System.Int32)">
+            <summary>
+            Gets the current speed of the entity in meters per second.
+            ```
+            To convert to MPH: speed * 2.236936
+            To convert to KPH: speed * 3.6
+            ```
+            </summary>
+            <param name="entity">
+            The entity to get the speed of
+            </param>
+            <returns>
+            The speed of the entity in meters per second
+            </returns>
+        </member>
+        <member name="M:CitizenFX.Core.Native.API.GetGameBuildNumber">
+            <summary>
+            Returns the internal build number of the current game being executed.
+            Possible values:
+            *   FiveM
+            *   1604
+            *   2060
+            *   2189
+            *   2372
+            *   RedM
+            *   1311
+            *   1355
+            *   1436
+            *   LibertyM
+            *   43
+            *   FXServer
+            *   0
+            </summary>
+            <returns>
+            The build number, or **0** if no build number is known.
+            </returns>
+        </member>
+        <member name="M:CitizenFX.Core.Native.API.GetGameName">
+            <summary>
+            Returns the current game being executed.
+            Possible values:
+            | Return value | Meaning                        |
+            | ------------ | ------------------------------ |
+            | `fxserver`   | Server-side code ('Duplicity') |
+            | `fivem`      | FiveM for GTA V                |
+            | `libertym`   | LibertyM for GTA IV            |
+            | `redm`       | RedM for Red Dead Redemption 2 |
+            </summary>
+            <returns>
+            The game the script environment is running in.
             </returns>
         </member>
         <member name="M:CitizenFX.Core.Native.API.GetGameTimer">
@@ -9134,6 +9210,26 @@
             The vehicle id. Returns 0 if the ped is/was not in a vehicle.
             </returns>
         </member>
+        <member name="M:CitizenFX.Core.Native.API.GetVehicleType(System.Int32)">
+            <summary>
+            Returns the type of the passed vehicle.
+            ### Vehicle types
+            *   automobile
+            *   bike
+            *   boat
+            *   heli
+            *   plane
+            *   submarine
+            *   trailer
+            *   train
+            </summary>
+            <param name="vehicle">
+            The vehicle's entity handle.
+            </param>
+            <returns>
+            If the entity is a vehicle, the vehicle type. If it is not a vehicle, the return value will be null.
+            </returns>
+        </member>
         <member name="M:CitizenFX.Core.Native.API.IsDuplicityVersion">
             <summary>
             Gets whether or not this is the CitizenFX server.
@@ -9254,6 +9350,15 @@
             <returns>
             The server ID of the first entity owner.
             </returns>
+        </member>
+        <member name="M:CitizenFX.Core.Native.API.PrintStructuredTrace(System.String)">
+            <summary>
+            Prints 'structured trace' data to the server `file descriptor 3` channel. This is not generally useful outside of
+            server monitoring utilities.
+            </summary>
+            <param name="jsonString">
+            JSON data to submit as `payload` in the `script_structured_trace` event.
+            </param>
         </member>
         <member name="M:CitizenFX.Core.Native.API.ProfilerEnterScope(System.String)">
             <summary>
@@ -10141,18 +10246,6 @@
             Called after SET_PED_HEAD_OVERLAY().
             </summary>
         </member>
-        <member name="M:CitizenFX.Core.Native.API.SetPedIntoVehicle(System.Int32,System.Int32,System.Int32)">
-            <summary>
-            Ped: The ped to warp.
-            vehicle: The vehicle to warp the ped into.
-            Seat_Index: [-1 is driver seat, -2 first free passenger seat]
-            Moreinfo of Seat Index
-            DriverSeat = -1
-            Passenger = 0
-            Left Rear = 1
-            RightRear = 2
-            </summary>
-        </member>
         <member name="M:CitizenFX.Core.Native.API.SetPedPropIndex(System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean)">
             <summary>
             This native is used to set prop variation on a ped. Components, drawables and textures IDs are related to the ped model.
@@ -10185,12 +10278,9 @@
         </member>
         <member name="M:CitizenFX.Core.Native.API.SetPedRandomComponentVariation(System.Int32,System.Boolean)">
             <summary>
-            p1 is always false in R* scripts; and a quick disassembly seems to indicate that p1 is unused.
+            p1 is always 0 in R* scripts; and a quick disassembly seems to indicate that p1 is unused.
             List of component/props ID:
             gtaxscripting.blogspot.com/2016/04/gta-v-peds-component-and-props.html
-            ```
-            ```
-            NativeDB Parameter 1: int p1
             </summary>
         </member>
         <member name="M:CitizenFX.Core.Native.API.SetPedRandomProps(System.Int32)">
@@ -10408,11 +10498,8 @@
         </member>
         <member name="M:CitizenFX.Core.Native.API.SetVehicleColours(System.Int32,System.Int32,System.Int32)">
             <summary>
-            colorPrimary &amp; colorSecondary are the paint index for the vehicle.
+            colorPrimary &amp; colorSecondary are the paint indexes for the vehicle.
             For a list of valid paint indexes, view: pastebin.com/pwHci0xK
-            -------------------------------------------------------------------------
-            Use this to get the number of color indices: pastebin.com/RQEeqTSM
-            Note: minimum color index is 0, maximum color index is (numColorIndices - 1)
             </summary>
         </member>
         <member name="M:CitizenFX.Core.Native.API.SetVehicleCustomPrimaryColour(System.Int32,System.Int32,System.Int32,System.Int32)">
@@ -10443,27 +10530,18 @@
         </member>
         <member name="M:CitizenFX.Core.Native.API.SetVehicleDoorsLocked(System.Int32,System.Int32)">
             <summary>
-            0 - CARLOCK_NONE
-            1 - CARLOCK_UNLOCKED
-            2 - CARLOCK_LOCKED (locked)
-            3 - CARLOCK_LOCKOUT_PLAYER_ONLY
-            4 - CARLOCK_LOCKED_PLAYER_INSIDE (can get in, can't leave)
-            (maybe, these are leftovers from GTA:VC)
-            5 - CARLOCK_LOCKED_INITIALLY
-            6 - CARLOCK_FORCE_SHUT_DOORS
-            7 - CARLOCK_LOCKED_BUT_CAN_BE_DAMAGED
-            (source: GTA VC miss2 leak, matching constants for 0/2/4, testing)
-            They use 10 in am_mp_property_int, don't know what it does atm.
-            </summary>
-        </member>
-        <member name="M:CitizenFX.Core.Native.API.SetVehicleNumberPlateText(System.Int32,System.String)">
-            <summary>
-            Sets a vehicle's license plate text.  8 chars maximum.
-            Example:
-            Ped playerPed = PLAYER::PLAYER_PED_ID();
-            Vehicle veh = PED::GET_VEHICLE_PED_IS_USING(playerPed);
-            char *plateText = "KING";
-            VEHICLE::SET_VEHICLE_NUMBER_PLATE_TEXT(veh, plateText);
+            // Source GTA VC miss2 leak, matching constants for 0/2/4, testing
+            // They use 10 in am_mp_property_int, don't know what it does atm.
+            enum eCarLock {
+            CARLOCK_NONE = 0,
+            CARLOCK_UNLOCKED = 1,
+            CARLOCK_LOCKED = 2,
+            CARLOCK_LOCKOUT_PLAYER_ONLY = 3,
+            CARLOCK_LOCKED_PLAYER_INSIDE = 4,
+            CARLOCK_LOCKED_INITIALLY = 5,
+            CARLOCK_FORCE_SHUT_DOORS = 6,
+            CARLOCK_LOCKED_BUT_CAN_BE_DAMAGED = 7
+            };
             </summary>
         </member>
         <member name="M:CitizenFX.Core.Native.API.TaskCombatPed(System.Int32,System.Int32,System.Int32,System.Int32)">
@@ -10488,14 +10566,10 @@
             speed 1.0 = walk, 2.0 = run
             p5 1 = normal, 3 = teleport to vehicle, 16 = teleport directly into vehicle
             p6 is always 0
-            Usage of seat
-            -1 = driver
-            0 = passenger
-            1 = left back seat
-            2 = right back seat
-            3 = outside left
-            4 = outside right
             </summary>
+            <param name="seatIndex">
+            See eSeatPosition declared in [`IS_VEHICLE_SEAT_FREE`](#\_0x22AC59A870E6A669).
+            </param>
         </member>
         <member name="M:CitizenFX.Core.Native.API.TaskGoToCoordAnyMeans(System.Int32,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Boolean,System.Int32,System.Single)">
             <summary>
@@ -10648,18 +10722,6 @@
             TASK::TASK_SHOOT_AT_ENTITY(bg[i], aimedentity, 5000, MISC::GET_HASH_KEY("FIRING_PATTERN_FULL_AUTO"));
             in practical usage, getting the entity the player is aiming at and then task the peds to shoot at the entity, at a button press event would be better.
             Firing Pattern Hash Information: https://pastebin.com/Px036isB
-            </summary>
-        </member>
-        <member name="M:CitizenFX.Core.Native.API.TaskWarpPedIntoVehicle(System.Int32,System.Int32,System.Int32)">
-            <summary>
-            Seat Numbers
-            -------------------------------
-            Driver = -1
-            Any = -2
-            Left-Rear = 1
-            Right-Front = 0
-            Right-Rear = 2
-            Extra seats = 3-14(This may differ from vehicle type e.g. Firetruck Rear Stand, Ambulance Rear)
             </summary>
         </member>
         <member name="M:CitizenFX.Core.Native.API.TriggerClientEventInternal(System.String,System.String,System.String,System.Int32)">
