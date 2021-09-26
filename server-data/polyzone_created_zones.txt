@@ -7,3 +7,12 @@ BoxZone:Create(vector3(173.11, -26.06, 68.34), 1.2, 1.4, {
   maxZ=69.34
 })
 
+--Name: jobcenter_leave | 2021-09-26T20:40:22Z
+BoxZone:Create(vector3(-77.65, -826.39, 243.39), 1.4, 1.0, {
+  name="jobcenter_leave",
+  heading=340,
+  --debugPoly=true,
+  minZ=240.39,
+  maxZ=244.39
+})
+
