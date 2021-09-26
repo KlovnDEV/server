@@ -1415,8 +1415,8 @@ AddEventHandler("police:setClientMeta",function(meta)
 end)
 
 RegisterNetEvent("np-admin:currentDevmode")
-AddEventHandler("np-admin:currentDevmode", function(devmode)
-    currentValues["devmode"] = devmode
+AddEventHandler("np-admin:currentDevmode", function(devmodeToggle)
+    currentValues["devmode"] = devmodeToggle
 	-- currentValues["thirst"] = 100
 	-- currentValues["hunger"] = 100 
 end)

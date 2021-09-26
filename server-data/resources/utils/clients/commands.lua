@@ -4,6 +4,8 @@ TriggerEvent('chat:addSuggestion', '/car', 'Spawn Car [args]')
 TriggerEvent('chat:addSuggestion', '/coords', 'Player Coordinates')
 TriggerEvent('chat:addSuggestion', '/id', 'Your ID')
 TriggerEvent('chat:addSuggestion', '/fix', 'Fix vehicle')
+TriggerEvent('chat:addSuggestion', '/devmode', 'On/off devmode mode')
+TriggerEvent('chat:addSuggestion', '/debug', 'On/off debug mode')
 TriggerEvent('chat:addSuggestion', '/teleport', 'Teleport to xyz')
 TriggerEvent('chat:addSuggestion', '/debug', 'Enable/Disable Debug')
 
@@ -29,6 +31,10 @@ end)
 
 RegisterCommand('ad', function(source, args, rawCommand)
     RPC.execute('server', 'adminCheck', '')
+end)
+
+RegisterCommand('devmode', function(source, args, rawCommand)
+    RPC.execute('client', 'np-admin:devmode', '')
 end)
 
 RegisterCommand('debug', function(source, args, rawCommand)

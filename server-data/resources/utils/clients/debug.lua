@@ -16,9 +16,9 @@ RegisterNetEvent("hud:enabledebug")
 AddEventHandler("hud:enabledebug",function()
 	dickheaddebug = not dickheaddebug
     if dickheaddebug then
-        print("Debug: Enabled")
+        RPC.execute('client', 'np-admin:currentDebug', true)
     else
-        print("Debug: Disabled")
+        RPC.execute('client', 'np-admin:currentDebug', false)
     end
 end)
 
