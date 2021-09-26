@@ -13,6 +13,6 @@ client_scripts {
 }
 server_scripts {
     'server/*.lua',
-    '@lib/clients/cl_rpc.lua',
+    '@lib/server/sv_rpc.lua',
     '@mysql-async/lib/MySQL.lua',
 }

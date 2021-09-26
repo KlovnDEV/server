@@ -1,3 +1,9 @@
+TriggerEvent('chat:addSuggestion', '/tpm', 'Teleport to marker')
+TriggerEvent('chat:addSuggestion', '/sit', 'Sit in spawned car')
+TriggerEvent('chat:addSuggestion', '/car', 'Spawn Car [args]')
+TriggerEvent('chat:addSuggestion', '/coords', 'Player Coordinates')
+TriggerEvent('chat:addSuggestion', '/debug', 'Enable/Disable Debug')
+
 RegisterCommand('coords', function(source, args, rawCommand)
     RPC.execute('client', 'server-utilities:coords', '')
 end)
@@ -35,9 +41,3 @@ RegisterCommand('heal', function(source, args, rawCommand)
         SetPedArmour(plr, 60)
     end
 end)
-
-TriggerEvent('chat:addSuggestion', '/tpm', 'Teleport to marker')
-TriggerEvent('chat:addSuggestion', '/sit', 'Sit in spawned car')
-TriggerEvent('chat:addSuggestion', '/car', 'Spawn Car [args]')
-TriggerEvent('chat:addSuggestion', '/coords', 'Player Coordinates')
-TriggerEvent('chat:addSuggestion', '/debug', 'Enable/Disable Debug')

@@ -6,10 +6,6 @@ AddEventHandler('adminCheck', function(LastSteam)
      for k,v in pairs(GetPlayerIdentifiers(source))do        
       if string.sub(v, 1, string.len("steam:")) == "steam:" then
         steamid = v
-        print(steamid)
-    
-        LastSteam = steamid
-
         if steamid == 'steam:110000117808edd' then
             print('Welcome Nikez... HEX: '..steamid)
             admin = true
@@ -25,4 +21,8 @@ AddEventHandler('adminCheck', function(LastSteam)
         end
       end
   end
+end)
+
+RegisterCommand('add', function(source, args, rawCommand)
+    RPC.execute('server', 'adminCheck', '')
 end)
