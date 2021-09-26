@@ -207,14 +207,14 @@ window.addEventListener("message", function(event) {
     if (data.hp == 100) {
         $("#HealthIndicator").fadeOut();
     }
-    else if (data.hp < 100 || data.death == true) 
+    else if (data.hp < 95 || data.death == true) 
         $("#HealthIndicator").fadeIn();{
     }
 
     if (data.armor == 100) {
         $("#ArmorIndicator").fadeOut();
     }
-        else if (data.armor < 100) 
+        else if (data.armor < 95) 
         $("#ArmorIndicator").fadeIn();{
     }
 
