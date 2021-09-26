@@ -21,7 +21,3 @@ end)
 RegisterCommand('heal', function(source, args, rawCommand)
     RPC.execute('client', 'healDumbass', '')
 end)
-
-RegisterCommand('show', function(source, args, rawCommand)
-    RPC.execute('client', 'interaction', '')
-end)
