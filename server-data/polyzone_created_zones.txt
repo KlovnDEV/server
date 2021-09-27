@@ -16,3 +16,12 @@ BoxZone:Create(vector3(-77.65, -826.39, 243.39), 1.4, 1.0, {
   maxZ=244.39
 })
 
+--Name: jobcenter | 2021-09-27T13:11:38Z
+BoxZone:Create(vector3(-72.99, -816.34, 243.39), 1.6, 2, {
+  name="jobcenter",
+  heading=340,
+  --debugPoly=true,
+  minZ=242.39,
+  maxZ=244.39
+})
+

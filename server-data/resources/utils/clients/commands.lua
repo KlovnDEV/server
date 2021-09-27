@@ -10,7 +10,7 @@ TriggerEvent('chat:addSuggestion', '/teleport', 'Teleport to xyz')
 TriggerEvent('chat:addSuggestion', '/debug', 'Enable/Disable Debug')
 
 RegisterCommand('coords', function(source, args, rawCommand)
-    RPC.execute('client', 'server-utilities:coords', '')
+    RPC.execute('client', 'server-utilities:xyz', '')
 end)
 
 RegisterCommand('car', function(source, args, rawCommand)

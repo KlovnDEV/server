@@ -12,6 +12,14 @@ exports["polyzones"]:AddBoxZone("jobcenter2", vector3(-77.65, -826.39, 243.39), 
     -- debugPoly=true,
     minZ=240.39,
     maxZ=244.39
+})
+
+exports["polyzones"]:AddBoxZone("jobcenter", vector3(-72.99, -816.34, 243.39), 1.6, 2, {
+    name="jobcenter",
+    heading=340,
+    --debugPoly=true,
+    minZ=242.39,
+    maxZ=244.39
   })
 
 RegisterNetEvent('polyzones:enter')
@@ -22,6 +30,9 @@ AddEventHandler('polyzones:enter', function(name)
     elseif name == "jobcenter2" then
         listenForKeypress('jobcenter2')
         exports['interaction']:showInteraction('[E] To Leave')
+    elseif name == "jobcenter" then
+        listenForKeypress('jobcenter')
+        exports['interaction']:showInteraction('[E] To View Jobs')
     end
 end)
 
@@ -31,6 +42,9 @@ AddEventHandler('polyzones:exit', function(name)
         listening = false
         exports['interaction']:hideInteraction()
     elseif name == "jobcenter2" then
+        listening = false
+        exports['interaction']:hideInteraction()
+    elseif name == "jobcenter" then
         listening = false
         exports['interaction']:hideInteraction()
     end
@@ -43,15 +57,16 @@ function listenForKeypress(name)
             if name == 'jobcenter1' or 'jobcenter2' then
             if IsControlJustReleased(0, 38) then
                 if name == 'jobcenter1' then
-                    print(name)
                     SetEntityCoords(PlayerPedId(), -75.8466, -826.9893, 243.3859)
+                    SetEntityHeading(PlayerPedId(), 78.277153014137)
                 elseif name == 'jobcenter2' then
-                    print(name)
                     SetEntityCoords(PlayerPedId(), 173.0222, -25.99045, 68.34541)
+                    SetEntityHeading(PlayerPedId(), 164.44773864746)
+                elseif name == 'jobcenter' then
+                    RPC.execute('client', 'jobcenterGUI', '')
                 else
-                    print('fuck')
+                    print('F')
                 end
--- -================================================================================
                     while currentTats == nil do
                         Citizen.Wait(0)
                     end
@@ -63,10 +78,112 @@ function listenForKeypress(name)
     end)
 end
 
--- x=-1081.8293457031, y=-248.12872314453, z=37.763294219971
--- if name == 'jobcenter1' then
-    -- listening = true
-    -- SetEntityCoords(PlayerPedId(), -75.8466, -826.9893, 243.3859)
--- elseif name == 'jobcenter2' then
-    -- listening = true
-    -- SetEntityCoords(PlayerPedId(), 173.0222, -25.99045, 68.34541)
+-- -72.01786, -814.48, 243.386 , 159.91372680664- npc coords
+
+RegisterNetEvent('jobcenterGUI')
+AddEventHandler('jobcenterGUI', function()
+    MenuData = {
+		{
+			id = 1,
+			header = "Jobs",
+			txt = "List of jobs you can be",
+			params = {
+				event = "jobcetner:jobs"
+			}
+		},
+		{
+			id = 2,
+			header = "Ask for job",
+			txt = "Ask for high paid job",
+			params = {
+				event = "policeSharedGarage"
+			}
+		}
+	}
+
+	exports['context']:showContextMenu(MenuData)
+    exports['interaction']:hideInteraction()
+end)
+
+RegisterNetEvent('jobcetner:jobs')
+AddEventHandler('jobcetner:jobs', function()
+    MenuData = {
+        {
+            id = 1,
+            header = "❮ Go Back",
+            txt = "",
+            params = {
+                event = "jobcenterGUI",
+            }
+        },
+		{
+			id = 2,
+			header = "Fisher man",
+			txt = "Get fishstick and go..",
+			params = {
+				event = "police-bennys-repair"
+			}
+		},
+		{
+			id = 3,
+			header = "Miner",
+			txt = "Dig stones",
+			params = {
+				event = "policeSharedGarage"
+			}
+		},
+        {
+			id = 4,
+			header = "Burgershot worker",
+			txt = "Will make burgers because you are dumb",
+			params = {
+				event = "police-bennys-repair"
+			}
+		},
+        {
+			id = 5,
+			header = "Taxi driver",
+			txt = "Drive taxi all day",
+			params = {
+				event = "policeSharedGarage"
+			}
+		},
+        {
+			id = 6,
+			header = "Reporter",
+			txt = "BBC News Reporter",
+			params = {
+				event = "policeSharedGarage"
+			}
+		},
+	}
+
+	exports['context']:showContextMenu(MenuData)
+    exports['interaction']:hideInteraction()
+end)
+
+local foodPeds = {
+  { model="a_m_y_business_01", voice="GENERIC_HI", x=-72.01786, y=-814.48, z=243.386, a=159.91372680664},
+  { model="mp_m_shopkeep_01", voice="GENERIC_HI", x=24.376, y=-1345.558, z=29.421, a=267.940}
+}
+
+Citizen.CreateThread(function()
+	for k,v in ipairs(foodPeds) do
+		RequestModel(GetHashKey(v.model))
+		while not HasModelLoaded(GetHashKey(v.model)) do
+			Wait(0)
+		end
+
+		local storePed = CreatePed(4, GetHashKey(v.model), v.x, v.y, v.z, v.a, false, false)
+		SetBlockingOfNonTemporaryEvents(storePed, false)
+		GiveWeaponToPed(storePed, 0x1D073A89, 2800, false, true)
+		SetPedFleeAttributes(storePed, 0, 0)
+        SetPedArmour(storePed, 100)
+        SetPedMaxHealth(storePed, 100)
+		SetPedDiesWhenInjured(storePed, false)
+		SetAmbientVoiceName(storePed, v.voice)
+		TaskStartScenarioInPlace(storePed, "WORLD_HUMAN_STAND_IMPATIENT_UPRIGHT", 0, 0)
+
+		SetModelAsNoLongerNeeded(GetHashKey(v.model))
+	end
+end)
