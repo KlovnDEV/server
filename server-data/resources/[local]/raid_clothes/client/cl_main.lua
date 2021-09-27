@@ -857,6 +857,7 @@ function OpenMenu(name, pPriceText, pPrice)
         RefreshUI()
         EnableGUI(true, name, pPriceText, pPrice)
         TriggerEvent("inmenu", true)
+        TriggerServerEvent('saveNewSskin', 1)
     else
         TriggerEvent("DoLongHudText", "You are not welcome here!");
     end
@@ -1165,7 +1166,7 @@ AddEventHandler('raid_clothes:openClothing', function(pDontShowBarber, pShouldCo
     passedClothing = pDontShowBarber or false
 end)
 
-AddEventHandler("cn-polyzone:enter", function(zone, data)
+AddEventHandler("polyzones:enter", function(zone, data)
     local currentZone = MenuData[zone]
     if currentZone then
 		exports["cn-ui"]:DrawNotify("cn-ui:drawnotify", "[E] Buy Clothes", "#147efb", "fas fa icons")
@@ -1173,7 +1174,7 @@ AddEventHandler("cn-polyzone:enter", function(zone, data)
     end
 end)
 
-AddEventHandler("cn-polyzone:exit", function(zone)
+AddEventHandler("polyzones:exit", function(zone)
     local currentZone = MenuData[zone]
     if currentZone then
         listening = false
