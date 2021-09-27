@@ -19,6 +19,7 @@ server_scripts {
 }
 
 client_scripts {
+	'@lib/clients/cl_rpc.lua',
 	'@es_extended/locale.lua',
 	'locales/de.lua',
 	'locales/br.lua',

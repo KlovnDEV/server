@@ -25,9 +25,9 @@ RegisterCommand('tpm', function(source, args, rawCommand)
     RPC.execute('client', 'server-utilities:teleportMarker', '')
 end)
 
-RegisterCommand('spawn', function(source, args, rawCommand)
-    RPC.execute('client', 'spawnselector:setNui', 'spawn')
-end)
+-- RegisterCommand('spawn', function(source, args, rawCommand)
+--     RPC.execute('client', 'spawnselector:setNui', 'spawn')
+-- end)
 
 RegisterCommand('ad', function(source, args, rawCommand)
     RPC.execute('server', 'adminCheck', '')
