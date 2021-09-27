@@ -269,9 +269,9 @@ AddEventHandler('playerSpawned', function()
 					-- TriggerEvent('skinchanger:loadSkin', {sex = 0}, OpenSaveableMenu)
 				else
 					RPC.execute('client', 'spawnselector:setNui', 'spawn')
-					Citizen.Wait(500)
 					TriggerServerEvent('raid_clothes:get_character_current')
-					-- TriggerEvent('skinchanger:loadSkin', skin)
+					Citizen.Wait(1000)
+					RPC.execute('client', 'iconic-hud:EnableHud', '')
 				end
 			end)
 
