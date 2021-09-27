@@ -857,7 +857,6 @@ function OpenMenu(name, pPriceText, pPrice)
         RefreshUI()
         EnableGUI(true, name, pPriceText, pPrice)
         TriggerEvent("inmenu", true)
-        TriggerServerEvent('saveNewSskin', 1)
     else
         TriggerEvent("DoLongHudText", "You are not welcome here!");
     end
@@ -881,7 +880,8 @@ function Save(save, close)
             
             TriggerServerEvent("raid_clothes:insert_character_face", data)
             TriggerServerEvent("raid_clothes:set_tats", currentTats)
-            TriggerEvent("cn-spawn:finishedClothing","Finished")
+            TriggerServerEvent('saveNewSskin', 1)
+            -- TriggerEvent("cn-spawn:finishedClothing","Finished")
         elseif not passedClothing then 
             passedClothing = true
             Wait(2000)
