@@ -270,8 +270,6 @@ AddEventHandler('playerSpawned', function()
 				else
 					RPC.execute('client', 'spawnselector:setNui', 'spawn')
 					TriggerServerEvent('raid_clothes:get_character_current')
-					Citizen.Wait(1000)
-					RPC.execute('client', 'iconic-hud:EnableHud', '')
 				end
 			end)
 

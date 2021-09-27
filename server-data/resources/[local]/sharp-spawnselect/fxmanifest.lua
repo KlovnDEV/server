@@ -5,6 +5,7 @@ game 'gta5'
 ui_page 'nui/html/index.html'
 
 client_scripts {
+    '@lib/clients/cl_rpc.lua',
     'client.lua',
 }
 
