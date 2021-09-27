@@ -205,31 +205,31 @@ window.addEventListener("message", function(event) {
 
 // AUTOMATICS    
     if (data.hp == 100) {
-        $("#HealthIndicator").fadeOut();
+        $("#HealthIndicator").fadeOut(1000);
     }
-    else if (data.hp < 95 || data.death == true) 
-        $("#HealthIndicator").fadeIn();{
+    else if (data.hp < 95) 
+        $("#HealthIndicator").fadeIn(1000);{
     }
 
     if (data.armor == 100) {
-        $("#ArmorIndicator").fadeOut();
+        $("#ArmorIndicator").fadeOut(1000);
     }
         else if (data.armor < 95) 
-        $("#ArmorIndicator").fadeIn();{
+        $("#ArmorIndicator").fadeIn(1000);{
     }
 
     if (data.hunger > 95) {
-        $("#HungerIndicator").fadeOut();
+        $("#HungerIndicator").fadeOut(1000);
     }
     else if (data.hunger < 95) 
-        $("#HungerIndicator").fadeIn();{
+        $("#HungerIndicator").fadeIn(1000);{
     }
 
     if (data.thirst > 95) {
-        $("#ThirstIndicator").fadeOut();
+        $("#ThirstIndicator").fadeOut(1000);
     }
     else if (data.thirst < 95) 
-        $("#ThirstIndicator").fadeIn();{
+        $("#ThirstIndicator").fadeIn(1000);{
     }
 // 
 
