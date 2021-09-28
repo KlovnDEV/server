@@ -1,4 +1,4 @@
-local Promises, Functions , CallIdentifier = {}, {}, GetCurrentResourceName()
+local Promises, Functions, RequestID, CallIdentifier = {}, {}, math.random(1, 99999), GetCurrentResourceName()
 
 RPC = {}
 
@@ -16,13 +16,13 @@ function RPC.execute(type, event, params)
     end
 
     if type == 'client' then
-        print("RPC => "..type.." side => callID: "..callID)
+        print("RPC => "..type.." side => requestID: "..RequestID.." => callID: "..callID)
 
         TriggerClientEvent(event, params)
         RPC.log(type, event, params, callID)
 
     elseif type == 'server' then
-        print("RPC => "..type.." side => callID: "..callID)
+        print("RPC => "..type.." side => requestID: "..RequestID.." => callID: "..callID)
 
         TriggerEvent(event, params, callID)
         RPC.log(type, event, params, callID)
