@@ -20,7 +20,16 @@ exports["polyzones"]:AddBoxZone("jobcenter", vector3(-72.99, -816.34, 243.39), 1
     --debugPoly=true,
     minZ=242.39,
     maxZ=244.39
-  })
+})
+
+local jobs = {
+    {name="Unemployed", id="unemployed", desc="Free guy 24/7"},
+    {name="Fisherman", id="fisherman", desc="Get fishstick and go !"},
+    {name="Miner", id="miner", desc="Dig stones all day"},
+    {name="Burgershot", id="burgershot", desc="Make burgers"},
+    {name="Taxi Driver", id="taxi", desc="Drive cab"},
+    {name="Reporter", id="reporter", desc="BBC News Reporter"},
+  }
 
 RegisterNetEvent('polyzones:enter')
 AddEventHandler('polyzones:enter', function(name)
@@ -105,9 +114,14 @@ AddEventHandler('jobcenterGUI', function()
     exports['interaction']:hideInteraction()
 end)
 
+RegisterNetEvent('jobcetner:setjob')
+AddEventHandler('jobcetner:setjob', function(name, grade)
+    TriggerServerEvent('jobsystem:Job', name, grade)
+end)
+
 RegisterNetEvent('jobcetner:jobs')
-AddEventHandler('jobcetner:jobs', function()
-    MenuData = {
+AddEventHandler('jobcetner:jobs', function(name, grade)
+    BackData = {
         {
             id = 1,
             header = "❮ Go Back",
@@ -116,50 +130,29 @@ AddEventHandler('jobcetner:jobs', function()
                 event = "jobcenterGUI",
             }
         },
-		{
-			id = 2,
-			header = "Fisher man",
-			txt = "Get fishstick and go..",
-			params = {
-				event = "police-bennys-repair"
-			}
-		},
-		{
-			id = 3,
-			header = "Miner",
-			txt = "Dig stones",
-			params = {
-				event = "policeSharedGarage"
-			}
-		},
+    }
+    exports['context']:showContextMenu(BackData)
+    for _, item in pairs(jobs) do
+        local nameJob = item.name
+        local idJob = item.id
+        local descJob = item.desc
+    MenuData = {
         {
-			id = 4,
-			header = "Burgershot worker",
-			txt = "Will make burgers because you are dumb",
-			params = {
-				event = "police-bennys-repair"
-			}
-		},
-        {
-			id = 5,
-			header = "Taxi driver",
-			txt = "Drive taxi all day",
-			params = {
-				event = "policeSharedGarage"
-			}
-		},
-        {
-			id = 6,
-			header = "Reporter",
-			txt = "BBC News Reporter",
-			params = {
-				event = "policeSharedGarage"
-			}
-		},
+            id = idJob,
+            header = nameJob,
+            txt = descJob,
+            params = {
+                event = "jobcetner:setjob",
+                args = {
+                    name = miner,
+                    grade = 0,
+                }
+            }
+        },
 	}
-
 	exports['context']:showContextMenu(MenuData)
     exports['interaction']:hideInteraction()
+    end
 end)
 
 local foodPeds = {
