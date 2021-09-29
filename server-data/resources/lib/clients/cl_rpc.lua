@@ -39,12 +39,13 @@ function RPC.executeLatent(type, event, params, timeout)
         if (solved == false) then
 
             if type == 'client' then
+
                 TriggerEvent(event, params)
             elseif type == 'server' then
+
                 TriggerServerEvent(event, params)
             end
-
-            print('debug '..timeout)
+            print("RPC => "..type.." side => requestID: "..RequestID.." => timeout: "..timeout.." => callID: "..callID)
         end
     end)
 end

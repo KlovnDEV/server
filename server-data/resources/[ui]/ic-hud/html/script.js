@@ -53,6 +53,32 @@ $(document).ready(function() {
         easing: "easeInOut",
     });
 
+    AmmoIndicator = new ProgressBar.Circle("#AmmoIndicator", {
+        color: "rgb(208, 61, 91)",
+        trailColor: "rgb(208, 61, 91, .45)", 
+        strokeWidth: 40,
+        trailWidth: 40,
+        duration: 250,
+        easing: "easeInOut",
+    });
+
+    NitrousIndicator = new ProgressBar.Circle("#NitrousIndicator", {
+        color: "rgb(255, 90, 97)",
+        trailColor: "rgb(255, 90, 97, .45)", 
+        strokeWidth: 40,
+        trailWidth: 40,
+        duration: 250,
+        easing: "easeInOut",
+    });
+
+    HarnessIndicator = new ProgressBar.Circle("#HarnessIndicator", {
+        color: "rgb(255, 90, 97)",
+        trailColor: "rgb(255, 90, 97, .45)", 
+        strokeWidth: 40,
+        trailWidth: 40,
+        duration: 250,
+        easing: "easeInOut",
+    });
 
     DevMode = new ProgressBar.Circle("#DevMode", {
         color: "rgb(1, 1 ,1)",
@@ -72,33 +98,6 @@ $(document).ready(function() {
         easing: "easeInOut",
     });
 
-    // Speedometer = new ProgressBar.Circle("#SpeedGauge", {
-    //     color: "#235157",
-    //     trailColor: "#ffffff",
-    //     strokeWidth: 8,
-    //     duration: 100,
-    //     trailWidth: 8,
-    //     easing: "easeInOut",
-    // });
-
-    // FuelIndicator = new ProgressBar.Circle("#GasGauge", {
-    //     color: "#235157",
-    //     trailColor: "#ffffff",
-    //     strokeWidth: 13,
-    //     duration: 100,
-    //     trailWidth: 13,
-    //     easing: "easeInOut",
-    // });
-
-    // NosIndicator = new ProgressBar.Line("#NosGauge", {
-    //     color: "#235157",
-    //     trailColor: "#ffffff",
-    //     strokeWidth: 13,
-    //     duration: 100,
-    //     trailWidth: 13,
-    //     easing: "easeInOut",
-    // });
-
     VoiceIndicator = new ProgressBar.Circle("#VoiceIndicator", {
         trailColor: "rgb(255, 255, 255, .45)",
         strokeWidth: 40,
@@ -117,6 +116,9 @@ window.addEventListener("message", function(event) {
         HungerIndicator.animate(data.hunger / 100);
         ThirstIndicator.animate(data.thirst / 100);
         StressIndicator.animate(data.stress / 100);
+        NitrousIndicator.animate(data.nos / 100);
+        AmmoIndicator.animate(data.ammo / 100 );
+        HarnessIndicator.animate(data.harness / 100);
         OxygenIndicator.animate(data.oxygen / 100);
     }
 
@@ -317,12 +319,14 @@ window.addEventListener("message", function(event) {
         $("#Street2").show()
         $("#streetwrapper").show()
         $("#compassindicator").show()
+        $("#NitrousIndicator").show()
     } else if (data.showCarUi == false && data.ShowLocation == false) {
         $(".Vehicle_hud").hide();
         $("#Street1").hide()
         $("#Street2").hide()
         $("#streetwrapper").hide()
         $("#compassindicator").hide()
+        $("#NitrousIndicator").hide()
     }
 
 
@@ -339,16 +343,8 @@ window.addEventListener("message", function(event) {
         $("#streetwrapper").hide()
         $("#compassindicator").hide()
         $(".Vehicle_hud").hide();
+        $("#NitrousIndicator").hide()
     }
-
-
-    // if (data.showNitrous == true) {
-    //     $("#NosGauge").show();
-    //     $("#Noslabel").show();
-    // } else if (data.showNitrous == false) {
-    //     $("#NosGauge").hide();
-    //     $("#Noslabel").hide();
-    // }
 
     if (data.action == "toggle_hud") {
         $("body").fadeToggle()

@@ -183,6 +183,30 @@ body {
     bottom: .85vh;
 }
 
+.fa-meteor {
+    color: white;
+    position: absolute;
+    font-size: 1.75vh;
+    left: 0.50vw;
+    bottom: .85vh;
+}
+
+.fa-tachometer-alt {
+    color: white;
+    position: absolute;
+    font-size: 1.75vh;
+    left: 0.38vw;
+    bottom: .90vh;
+}
+
+.fa-bars {
+    color: white;
+    position: absolute;
+    font-size: 1.75vh;
+    left: 0.51vw;
+    bottom: .90vh;
+}
+
 .fa-microphone {
     color: white;
     position: absolute;
@@ -306,12 +330,12 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-    right: 35.069vw;
+    right: 35.040vw;
     top: 40.75vh;
     font-size: 1.5vh;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.4vh;
+    font-size: 1.6vh;
     font-weight: bold;
     text-shadow: 0px 0px 5px rgb(0, 0, 0);
 }

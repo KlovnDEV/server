@@ -6,6 +6,7 @@ TriggerEvent('chat:addSuggestion', '/id', 'Your ID')
 TriggerEvent('chat:addSuggestion', '/fix', 'Fix vehicle')
 TriggerEvent('chat:addSuggestion', '/devmode', 'On/off devmode mode')
 TriggerEvent('chat:addSuggestion', '/debug', 'On/off debug mode')
+TriggerEvent('chat:addSuggestion', '/hud', 'Enable/Disable Hud')
 TriggerEvent('chat:addSuggestion', '/teleport', 'Teleport to xyz')
 TriggerEvent('chat:addSuggestion', '/debug', 'Enable/Disable Debug')
 
@@ -19,6 +20,10 @@ end)
 
 RegisterCommand('sit', function(source, args, rawCommand)
     RPC.execute('client', 'server-utilities:sitInVehicle', '')
+end)
+
+RegisterCommand('hud', function(source, args, rawCommand)
+    RPC.executeLatent('client', 'rpc:isloggedin', '', 1000)
 end)
 
 RegisterCommand('tpm', function(source, args, rawCommand)

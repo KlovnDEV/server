@@ -16,6 +16,7 @@ currentValues = {
 	["oxy"] = 200,
 	["stress"] = 100,
 	["voice"] = 2,
+	["nos"] = 100,
 	["devmode"] = false,
 	["devdebug"] = false,
 	["is_talking"] = false
@@ -28,13 +29,8 @@ setLastUpdate = 0
 
 DecorRegister("GetVehicleCurrentFuel", 3)
 
-
-RegisterCommand("hud", function()
-   TriggerEvent("iconic-hud:EnableHud")
-end)
-
-RegisterNetEvent("iconic-hud:EnableHud")
-AddEventHandler("iconic-hud:EnableHud", function()
+RegisterNetEvent("rpc:isloggedin")
+AddEventHandler("rpc:isloggedin", function()
     isLoggedIn = true
 end)
 
@@ -256,6 +252,7 @@ Citizen.CreateThread(function()
 
 			local get_ped = PlayerPedId()
             local armor = GetPedArmour(PlayerPedId())
+			local ammo = GetAmmoInPedWeapon(get_ped, GetSelectedPedWeapon(get_ped))
 			-- local death = exports['ragdoll']:GetDeathStatus()
 			local death = false
             currentValues["health"] = GetEntityHealth(get_ped) - 100
@@ -282,6 +279,7 @@ Citizen.CreateThread(function()
                 hunger = currentValues["hunger"],
                 thirst = currentValues["thirst"],
                 stress = currentValues["stress"],
+				nos = currentValues["hunger"],
                 oxygen = lerp(0, 100, rangePercent(0, 205, currentValues["oxy"])),
 				death = death
             })
@@ -330,11 +328,6 @@ local x = -0.025
 local y = -0.015
 local w = 0.16
 local h = 0.25
-
-
-RegisterCommand("togglehud", function()  
-	SendNUIMessage({action = "toggle_hud"})
-end, false)
 
 Citizen.CreateThread(function()
 
@@ -682,93 +675,93 @@ Citizen.CreateThread( function()
 end)
 
 
-local crouched = false
--- exports["np-keybinds1"]:registerKeyMapping("Crouch", "Player", "Toggle Crouch", "+Crouch", "-Crouch", "LCONTROL", true)
-RegisterCommand("+Crouch", function()
-    local ped = PlayerPedId()
+-- local crouched = false
+-- -- exports["np-keybinds1"]:registerKeyMapping("Crouch", "Player", "Toggle Crouch", "+Crouch", "-Crouch", "LCONTROL", true)
+-- RegisterCommand("Crouch", function()
+--     local ped = PlayerPedId()
 
-    if (DoesEntityExist(ped) and not IsEntityDead(ped)) then 
-        DisableControlAction(0, 36, true) -- INPUT_DUCK  
+--     if (DoesEntityExist(ped) and not IsEntityDead(ped)) then 
+--         DisableControlAction(0, 36, true) -- INPUT_DUCK  
 
-        if (not IsPauseMenuActive()) then 
-            RequestAnimSet("move_ped_crouched")
+--         if (not IsPauseMenuActive()) then 
+--             RequestAnimSet("move_ped_crouched")
 
-            while (not HasAnimSetLoaded("move_ped_crouched")) do 
-                Citizen.Wait(100)
-            end 
+--             while (not HasAnimSetLoaded("move_ped_crouched")) do 
+--                 Citizen.Wait(100)
+--             end 
 
-            if crouched then 
-                TriggerEvent("AnimSet:Set")
-                crouched = false 
-            else
-                SetPedMovementClipset(ped, "move_ped_crouched", 0.25)
-                crouched = true 
-            end 
-        end 
-    end 
-end, false)
+--             if crouched then 
+--                 TriggerEvent("AnimSet:Set")
+--                 crouched = false 
+--             else
+--                 SetPedMovementClipset(ped, "move_ped_crouched", 0.25)
+--                 crouched = true 
+--             end 
+--         end 
+--     end 
+-- end, false)
 
 
 
-RegisterNetEvent('lowerthirst')
-AddEventHandler('lowerthirst', function()
+-- RegisterNetEvent('lowerthirst')
+-- AddEventHandler('lowerthirst', function()
     
-    currentValues["thirst"] = currentValues["thirst"] - 1
+--     currentValues["thirst"] = currentValues["thirst"] - 1
 
-    if currentValues["thirst"] < 0 then
-        currentValues["thirst"] = 0
-    end
+--     if currentValues["thirst"] < 0 then
+--         currentValues["thirst"] = 0
+--     end
 
-    if currentValues["thirst"] > 100 then
-        currentValues["thirst"] = 100
-    end
+--     if currentValues["thirst"] > 100 then
+--         currentValues["thirst"] = 100
+--     end
 
-end)
+-- end)
 
-RegisterNetEvent('changethirst')
-AddEventHandler('changethirst', function()
+-- RegisterNetEvent('changethirst')
+-- AddEventHandler('changethirst', function()
     
-    currentValues["thirst"] = currentValues["thirst"] + 25
+--     currentValues["thirst"] = currentValues["thirst"] + 25
 
-    if currentValues["thirst"] < 0 then
-        currentValues["thirst"] = 0
-    end
+--     if currentValues["thirst"] < 0 then
+--         currentValues["thirst"] = 0
+--     end
 
-    if currentValues["thirst"] > 100 then
-        currentValues["thirst"] = 100
-    end
+--     if currentValues["thirst"] > 100 then
+--         currentValues["thirst"] = 100
+--     end
 
-end)
+-- end)
 
-RegisterNetEvent('coffee:drink')
-AddEventHandler('coffee:drink', function()
+-- RegisterNetEvent('coffee:drink')
+-- AddEventHandler('coffee:drink', function()
 	
-	currentValues["thirst"] = currentValues["thirst"] + 45
+-- 	currentValues["thirst"] = currentValues["thirst"] + 45
 
-	if currentValues["thirst"] < 0 then
-		currentValues["thirst"] = 0
-	end
+-- 	if currentValues["thirst"] < 0 then
+-- 		currentValues["thirst"] = 0
+-- 	end
 
-	if currentValues["thirst"] > 100 then
-		currentValues["thirst"] = 100
-	end
+-- 	if currentValues["thirst"] > 100 then
+-- 		currentValues["thirst"] = 100
+-- 	end
 	
-end)
+-- end)
 
-RegisterNetEvent('coffee:drink2')
-AddEventHandler('coffee:drink2', function()
+-- RegisterNetEvent('coffee:drink2')
+-- AddEventHandler('coffee:drink2', function()
 	
-	currentValues["thirst"] = currentValues["thirst"] + 25
+-- 	currentValues["thirst"] = currentValues["thirst"] + 25
 
-	if currentValues["thirst"] < 0 then
-		currentValues["thirst"] = 0
-	end
+-- 	if currentValues["thirst"] < 0 then
+-- 		currentValues["thirst"] = 0
+-- 	end
 
-	if currentValues["thirst"] > 100 then
-		currentValues["thirst"] = 100
-	end
+-- 	if currentValues["thirst"] > 100 then
+-- 		currentValues["thirst"] = 100
+-- 	end
 	
-end)
+-- end)
 
 
 -- RegisterNetEvent('changehunger')
@@ -1007,6 +1000,7 @@ AddEventHandler("roll",function(times,weight)
 		
 	end
 	TriggerServerEvent("actionclose", "Dice rolled " .. strg, Coords)
+	print(strg, coords)
 end)
 
 function rollAnim()
@@ -1435,5 +1429,6 @@ AddEventHandler('onResourceStart', function(resourceName)
 	  return
 	end
 	print('' .. resourceName .. ' has been started.')
-	RPC.execute('client', 'iconic-hud:EnableHud', '')
+	SendNUIMessage({action = "toggle_hud"})
+	RPC.execute('client', 'rpc:isloggedin', '')
   end)
