@@ -252,7 +252,7 @@ Citizen.CreateThread(function()
 
 			local get_ped = PlayerPedId()
             local armor = GetPedArmour(PlayerPedId())
-			local ammo = GetAmmoInPedWeapon(get_ped, GetSelectedPedWeapon(get_ped))
+			-- local ammo = GetAmmoInPedWeapon(get_ped, GetSelectedPedWeapon(get_ped))
 			-- local death = exports['ragdoll']:GetDeathStatus()
 			local death = false
             currentValues["health"] = GetEntityHealth(get_ped) - 100
@@ -280,6 +280,7 @@ Citizen.CreateThread(function()
                 thirst = currentValues["thirst"],
                 stress = currentValues["stress"],
 				nos = currentValues["hunger"],
+				ammo = 100,
                 oxygen = lerp(0, 100, rangePercent(0, 205, currentValues["oxy"])),
 				death = death
             })
