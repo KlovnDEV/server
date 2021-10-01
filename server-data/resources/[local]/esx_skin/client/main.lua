@@ -256,6 +256,10 @@ function OpenSaveableMenu(submitCb, cancelCb, restrict)
 	end, cancelCb, restrict)
 end
 
+RegisterCommand('getskin', function()
+	TriggerServerEvent('raid_clothes:get_character_current')
+end)
+
 AddEventHandler('playerSpawned', function()
 	Citizen.CreateThread(function()
 		while not playerLoaded do

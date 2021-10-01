@@ -5,6 +5,7 @@ description 'ESX Skin'
 version '1.1.0'
 
 server_scripts {
+	'@lib/server/sv_rpc.lua',
 	'@mysql-async/lib/MySQL.lua',
 	'@es_extended/locale.lua',
 	'locales/de.lua',
