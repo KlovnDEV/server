@@ -64,30 +64,6 @@ exports('RPC.executeLatent', type, event, params, timeout)
 
 exports('RPC.log', type, event, params)
 
---- {TEST}
-
-RegisterCommand('tmax', function(type, event, params)
-    RPC.execute('server', 'tmaxserver', '125$')
-end)
-
-RegisterCommand('regev', function(event, funct)
-    RPC.execute('client', 'tmax1', '940$')
-end)
-
-RegisterCommand('timeout', function(name, timeout)
-    RPC.executeLatent('tmax', 5000)
-end)
-
 ------------------------------------------------------------------
 --                          (Events)                           --
 ------------------------------------------------------------------
-
-RegisterNetEvent('tmax1')
-AddEventHandler('tmax1', function(money)
-    print('RPC.execute => | Event: tmax1 | Function: '..money)
-end)
-
-RegisterNetEvent('tmax2')
-AddEventHandler('tmax2', function(money)
-    print('RPC.execute => | Event: tmax2 | Function: '..money)
-end)
