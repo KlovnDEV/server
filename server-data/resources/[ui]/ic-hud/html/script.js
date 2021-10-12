@@ -320,6 +320,7 @@ window.addEventListener("message", function(event) {
         $("#streetwrapper").show()
         $("#compassindicator").show()
         $("#NitrousIndicator").show()
+        $("#HarnessIndicator").show()
     } else if (data.showCarUi == false && data.ShowLocation == false) {
         $(".Vehicle_hud").hide();
         $("#Street1").hide()
@@ -327,6 +328,7 @@ window.addEventListener("message", function(event) {
         $("#streetwrapper").hide()
         $("#compassindicator").hide()
         $("#NitrousIndicator").hide()
+        $("#HarnessIndicator").hide()
     }
 
 
@@ -337,6 +339,7 @@ window.addEventListener("message", function(event) {
         $("#streetwrapper").show()
         $("#compassindicator").show()
         $(".Vehicle_hud").hide();
+        $("#HarnessIndicator").show()
     } else if (data.ShowLocation == false) {
         $("#Street1").hide()
         $("#Street2").hide()
@@ -344,6 +347,7 @@ window.addEventListener("message", function(event) {
         $("#compassindicator").hide()
         $(".Vehicle_hud").hide();
         $("#NitrousIndicator").hide()
+        $("#HarnessIndicator").hide()
     }
 
     if (data.action == "toggle_hud") {
