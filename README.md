@@ -2,4 +2,4 @@
 
 <hr>
 
-<h1>Developer: alex7777</h1>
+<h4>Developer: alex7777</h4>
