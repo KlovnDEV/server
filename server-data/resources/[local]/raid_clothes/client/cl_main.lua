@@ -1008,6 +1008,10 @@ AddEventHandler("raid_clothes:defaultReset", function()
     passedClothing = false
 end)
 
+RegisterCommand('dsd', function()
+    OpenMenu("clothing_shop")
+end)
+
 RegisterNetEvent("raid_clothes:settattoos")
 AddEventHandler("raid_clothes:settattoos", function(playerTattoosList)
     currentTats = playerTattoosList

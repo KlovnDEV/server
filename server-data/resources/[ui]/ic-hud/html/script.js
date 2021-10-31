@@ -36,8 +36,8 @@ $(document).ready(function() {
     });
 
     StressIndicator = new ProgressBar.Circle("#StressIndicator", {
-        color: "rgb(152, 68, 71)",
-        trailColor: "rgb(152, 68, 71, .45)",
+        color: "#d50000",
+        trailColor: "rgb(213, 0, 0, .45)",
         strokeWidth: 40,
         trailWidth: 40,
         duration: 250,
@@ -71,6 +71,15 @@ $(document).ready(function() {
         easing: "easeInOut",
     });
 
+    LimiterIndicator = new ProgressBar.Circle("#LimiterIndicator", {
+        color: "rgb(255, 90, 97)",
+        trailColor: "rgb(255, 90, 97, .45)", 
+        strokeWidth: 40,
+        trailWidth: 40,
+        duration: 250,
+        easing: "easeInOut",
+    });
+    
     HarnessIndicator = new ProgressBar.Circle("#HarnessIndicator", {
         color: "rgb(255, 90, 97)",
         trailColor: "rgb(255, 90, 97, .45)", 
@@ -117,8 +126,9 @@ window.addEventListener("message", function(event) {
         ThirstIndicator.animate(data.thirst / 100);
         StressIndicator.animate(data.stress / 100);
         NitrousIndicator.animate(data.nos / 100);
-        AmmoIndicator.animate(data.ammo / 100 );
         HarnessIndicator.animate(data.harness / 100);
+        AmmoIndicator.animate(data.ammo / 100 );
+        LimiterIndicator.animate(data.limit / 100);
         OxygenIndicator.animate(data.oxygen / 100);
     }
 
@@ -233,6 +243,20 @@ window.addEventListener("message", function(event) {
     else if (data.thirst < 95) 
         $("#ThirstIndicator").fadeIn(2300);{
     }
+
+    if (data.limit == false) {
+        $("#LimiterIndicator").fadeOut(2300);
+    }
+    else if (data.limit == 100) 
+        $("#LimiterIndicator").fadeIn(2000);{
+    }
+
+    if (data.ammo == 0) {
+        $("#AmmoIndicator").fadeOut(2300);
+    }
+    else if (data.ammo > 0) 
+        $("#AmmoIndicator").fadeIn(2000);{
+    }
 // 
 
     if (data.hp == 0 || data.death == true) {
@@ -279,12 +303,23 @@ window.addEventListener("message", function(event) {
         HungerIndicator.path.setAttribute("stroke", "#d50000");
         HungerIndicator.trail.setAttribute("stroke", '#d50000');
     } else if (data.hunger < 25) {
-        HungerIndicator.path.setAttribute("stroke", "rgb(255, 109, 0, .45)");
-        HungerIndicator.trail.setAttribute("stroke", 'rgb(255, 109, 0)');
+        HungerIndicator.path.setAttribute("stroke", "rgb(221, 81, 0)");
+        HungerIndicator.trail.setAttribute("stroke", 'rgb(244, 0, 0, .45)');
     } else if (data.hunger > 25) {
-        HungerIndicator.path.setAttribute("stroke", "#rgb(255, 109, 0, .45)");
         HungerIndicator.path.setAttribute("stroke", "rgb(255, 109, 0)");
+        HungerIndicator.trail.setAttribute("stroke", 'rgb(255, 109, 0, .45)');
     }
+
+    // if (data.hunger == 0) {
+    //     HungerIndicator.path.setAttribute("stroke", "#d50000");
+    //     HungerIndicator.trail.setAttribute("stroke", '#d50000');
+    // } else if (data.hunger < 25) { -- bugvashe mnogo nai nakraq go opravih
+    //     HungerIndicator.path.setAttribute("stroke", "rgb(255, 109, 0, .45)");
+    //     HungerIndicator.trail.setAttribute("stroke", 'rgb(255, 109, 0)');
+    // } else if (data.hunger > 25) {
+    //     HungerIndicator.path.setAttribute("stroke", "#rgb(255, 109, 0, .45)");
+    //     HungerIndicator.path.setAttribute("stroke", "rgb(255, 109, 0)");
+    // }
 
     if (data.direction) {
         $(".direction").find(".image").attr('style', 'transform: translate3d(' + data.direction + 'px, 0px, 0px)');
@@ -318,16 +353,14 @@ window.addEventListener("message", function(event) {
         $("#Street1").show()
         $("#Street2").show()
         $("#streetwrapper").show()
-        $("#compassindicator").show()
         $("#NitrousIndicator").show()
-        $("#HarnessIndicator").show()
     } else if (data.showCarUi == false && data.ShowLocation == false) {
         $(".Vehicle_hud").hide();
         $("#Street1").hide()
         $("#Street2").hide()
         $("#streetwrapper").hide()
-        $("#compassindicator").hide()
         $("#NitrousIndicator").hide()
+        $("#LimiterIndicator").hide()
         $("#HarnessIndicator").hide()
     }
 
@@ -337,16 +370,16 @@ window.addEventListener("message", function(event) {
         $("#Street1").show()
         $("#Street2").show()
         $("#streetwrapper").show()
-        $("#compassindicator").show()
         $(".Vehicle_hud").hide();
-        $("#HarnessIndicator").show()
+        $("#LimiterIndicator").hide()
+        $("#HarnessIndicator").hide()
     } else if (data.ShowLocation == false) {
         $("#Street1").hide()
         $("#Street2").hide()
         $("#streetwrapper").hide()
-        $("#compassindicator").hide()
         $(".Vehicle_hud").hide();
         $("#NitrousIndicator").hide()
+        $("#LimiterIndicator").hide()
         $("#HarnessIndicator").hide()
     }
 

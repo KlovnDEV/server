@@ -11,12 +11,14 @@ lastValues = {}
 currentValues = {
 	["health"] = 100,
 	["armor"] = 100,
-	["hunger"] = 100,
+	-- ["hunger"] = 100,
 	["thirst"] = 100,
 	["oxy"] = 200,
 	["stress"] = 100,
 	["voice"] = 2,
 	["nos"] = 100,
+	["limit"] = 100,
+	-- ["ammo"] = 100,
 	["devmode"] = false,
 	["devdebug"] = false,
 	["is_talking"] = false
@@ -127,11 +129,6 @@ AddEventHandler("seatbelt", function(belt)
     seatbelt = belt
 end)
 
-RegisterNetEvent("harness")
-AddEventHandler("harness", function(belt)
-    seatbelt = belt
-end)
-
 local DevMode = false
 RegisterNetEvent("np-admin:currentDevmode", function(pOn)
 	DevMode = pOn
@@ -157,26 +154,26 @@ Citizen.CreateThread(function()
             local veh = GetVehiclePedIsIn(player, false)
             SetPedSuffersCriticalHits(PlayerPedId(),false)
             local x, y, z = table.unpack(GetEntityCoords(player, true))
-            local currentStreetHash, intersectStreetHash = GetStreetNameAtCoord(x, y, z, currentStreetHash, intersectStreetHash)
-            currentStreetName = GetStreetNameFromHashKey(currentStreetHash)
-            intersectStreetName = GetStreetNameFromHashKey(intersectStreetHash)
-            zone = tostring(GetNameOfZone(x, y, z))
-            local area = GetLabelText(zone)
+            -- local currentStreetHash, intersectStreetHash = GetStreetNameAtCoord(x, y, z, currentStreetHash, intersectStreetHash)
+            -- currentStreetName = GetStreetNameFromHashKey(currentStreetHash)
+            -- intersectStreetName = GetStreetNameFromHashKey(intersectStreetHash)
+            -- zone = tostring(GetNameOfZone(x, y, z))
+            -- local area = GetLabelText(zone)
             -- local pRadio = exports['radio']:pChannel()
 
             if not zone then
                 zone = "UNKNOWN"
             end
     
-            if intersectStreetName ~= nil and intersectStreetName ~= "" and currentStreetName ~= nil and currentStreetName ~= "" then
-                playerStreetsLocation = currentStreetName .. " | [" .. intersectStreetName .. "]"
-            elseif currentStreetName ~= nil and currentStreetName ~= "" then
-                playerStreetsLocation = currentStreetName
-            end
+            -- if intersectStreetName ~= nil and intersectStreetName ~= "" and currentStreetName ~= nil and currentStreetName ~= "" then
+            --     playerStreetsLocation = currentStreetName .. " | [" .. intersectStreetName .. "]"
+            -- elseif currentStreetName ~= nil and currentStreetName ~= "" then
+            --     playerStreetsLocation = currentStreetName
+            -- end
 
             SendNUIMessage({action = "voice_level", voicelevel = voice})
 
-            street = playerStreetsLocation
+            -- street = playerStreetsLocation
 
      
             if IsPedSwimmingUnderWater(PlayerPedId()) then
@@ -194,7 +191,8 @@ Citizen.CreateThread(function()
             end
 			
             if isLoggedIn and IsPedInAnyVehicle(PlayerPedId(), true) and not IsPauseMenuActive() then 
-                local Mph = math.ceil(GetEntitySpeed(veh) * 2.236936)
+                -- local Mph = math.ceil(GetEntitySpeed(veh) * 2.236936)
+				local Mph = math.ceil(GetEntitySpeed(veh) * 3.6)
                 local vehhash = GetEntityModel(veh)
                 local maxspeed = GetVehicleModelMaxSpeed(vehhash) * 3.6
                 TriggerEvent('iconic-map:ShowMap')
@@ -208,7 +206,7 @@ Citizen.CreateThread(function()
                 DisplayRadar(false)
 				SendNUIMessage({DevMode = DevMode})
 				SendNUIMessage({DebugMode = DebugMode})
-				SendNUIMessage({ShowLocation = pShowLocation, street = area, street2 = street})
+				SendNUIMessage({ShowLocation = false})
                 SendNUIMessage({showCarUi = false})
                 TriggerEvent('iconic-map:HideMap')
             end
@@ -248,23 +246,31 @@ Citizen.CreateThread(function()
 					print("Thrist: "..ThiVal)
 				end
             end)
-    end)
+			TriggerEvent('esx_status:getStatus', 'stress', function(status)
+                StsVal = status.val/1000000*100
+				if debugStatus then
+					print("Stress: "..StsVal)
+				end
+            end)
+		end)
 
 			local get_ped = PlayerPedId()
             local armor = GetPedArmour(PlayerPedId())
-			-- local ammo = GetAmmoInPedWeapon(get_ped, GetSelectedPedWeapon(get_ped))
 			-- local death = exports['ragdoll']:GetDeathStatus()
 			local death = false
             currentValues["health"] = GetEntityHealth(get_ped) - 100
 			currentValues["armor"] = GetPedArmour(get_ped)
-			currentValues["stress"] = math.ceil(stresslevel / 100)
+			-- currentValues["stress"] = math.ceil(stresslevel / 100)
 			currentValues["parachute"] = HasPedGotWeapon(get_ped, `gadget_parachute`, false)
+			currentValues["ammo"] = GetAmmoInPedWeapon(PlayerPedId(), GetSelectedPedWeapon(PlayerPedId()))
 
-			if currentValues["stress"] > 100 then currentValues["stress"] = 100 end
+			-- if currentValues["stress"] > 100 then currentValues["stress"] = 100 end
 
-      		currentValues["hunger"] = HunVal
+      		currentValues["hunger"] = HunVal -- hunger
 
-			currentValues["thirst"] = ThiVal
+			currentValues["thirst"] = ThiVal -- thrist
+
+			currentValues["stress"] = StsVal -- stress
 
 			-- if currentValues["hunger"] > 100 then currentValues["hunger"] = 100 end
 
@@ -279,8 +285,9 @@ Citizen.CreateThread(function()
                 hunger = currentValues["hunger"],
                 thirst = currentValues["thirst"],
                 stress = currentValues["stress"],
-				nos = currentValues["hunger"],
-				ammo = 100,
+				-- nos = currentValues["hunger"],
+				limit = limiter,
+				ammo = currentValues["ammo"],
                 oxygen = lerp(0, 100, rangePercent(0, 205, currentValues["oxy"])),
 				death = death
             })
@@ -297,7 +304,7 @@ Citizen.CreateThread(function()
             TriggerEvent('iconic-map:HideMap')
             SendNUIMessage({showUi = false})
             SendNUIMessage({showCarUi = false})
-			SendNUIMessage({ShowLocation = false})
+			-- SendNUIMessage({ShowLocation = false})
         end
     end
 end)
@@ -1047,8 +1054,8 @@ end)
 -- currentValues["hunger"] = 100
 -- currentValues["thirst"] = 100
 
-hunger = "Full"
-thirst = "Sustained"
+-- hunger = "Full"
+-- thirst = "Sustained"
 local cruise = {enabled = false, speed = 0, airTime = 0}
 
 
@@ -1181,10 +1188,10 @@ AddEventHandler("UseOxygenTank",function()
 end)
 
 dstamina = 0
-RegisterNetEvent("client:updateStress")
-AddEventHandler("client:updateStress",function(newStress)
-	stresslevel = newStress
-end)
+-- RegisterNetEvent("client:updateStress")
+-- AddEventHandler("client:updateStress",function(newStress)
+-- 	stresslevel = newStress
+-- end)
 
 
 local beds = {
@@ -1291,78 +1298,127 @@ function camOff()
 end
 
 
-local stressDisabled = false
-RegisterNetEvent("client:disableStress")
-AddEventHandler("client:disableStress",function(stressNew)
-	stressDisabled = stressNew
-end)
+-- local stressDisabled = false
+-- RegisterNetEvent("client:disableStress")
+-- AddEventHandler("client:disableStress",function(stressNew)
+-- 	stressDisabled = stressNew
+-- end)
 
 
-RegisterNetEvent("client:newStress")
-AddEventHandler("client:newStress",function(positive, alteredValue, notify)
-	if stressDisabled then
-		return
-	end
-	if notify then
-		if positive then
-			TriggerEvent("DoShortHudText",'Stress Gained',6)
-		else
-			TriggerEvent("DoShortHudText",'Stress Relieved',6)
-		end
-	end
+-- RegisterNetEvent("client:newStress")
+-- AddEventHandler("client:newStress",function(positive, alteredValue, notify)
+-- 	if stressDisabled then
+-- 		return
+-- 	end
+-- 	if notify then
+-- 		if positive then
+-- 			TriggerEvent("DoShortHudText",'Stress Gained',6)
+-- 		else
+-- 			TriggerEvent("DoShortHudText",'Stress Relieved',6)
+-- 		end
+-- 	end
 	
-	TriggerServerEvent("server:alterStress",positive,alteredValue)
+-- 	TriggerServerEvent("server:alterStress",positive,alteredValue)
+-- end)
+
+
+-- RegisterNetEvent("stress:timed")
+-- AddEventHandler("stress:timed",function(alteredValue,scenario)
+-- 	local removedStress = 0
+-- 	Wait(1000)
+
+-- 	TriggerEvent("DoShortHudText",'Stress is being relieved',6)
+-- 	SetPlayerMaxArmour(PlayerId(), 30 )
+-- 	while true do
+-- 		removedStress = removedStress + 100
+-- 		if removedStress >= alteredValue then
+-- 			break
+-- 		end
+--         local armor = GetPedArmour(PlayerPedId())
+--         SetPedArmour(PlayerPedId(),armor+3)
+-- 		if scenario ~= "None" then
+-- 			if not IsPedUsingScenario(PlayerPedId(),scenario) then
+-- 				TriggerEvent("animation:cancel")
+-- 				break
+-- 			end
+-- 		end
+-- 		Citizen.Wait(1000)
+-- 	end
+-- 	TriggerServerEvent("server:alterStress",false,removedStress)
+-- end)
+
+-- RegisterNetEvent("stress:timed2")
+-- AddEventHandler("stress:timed2",function(alteredValue,scenario)
+-- 	local removedStress = 0
+-- 	Wait(1000)
+
+-- 	TriggerEvent("DoShortHudText",'Stress is being relieved',6)
+-- 	SetPlayerMaxArmour(PlayerId(), 60 )
+-- 	while true do
+-- 		removedStress = removedStress + 100
+-- 		if removedStress >= alteredValue then
+-- 			break
+-- 		end
+--         local armor = GetPedArmour(PlayerPedId())
+--         SetPedArmour(PlayerPedId(),armor+3)
+-- 		if scenario ~= "None" then
+-- 			if not IsPedUsingScenario(PlayerPedId(),scenario) then
+-- 				TriggerEvent("animation:cancel")
+-- 				break
+-- 			end
+-- 		end
+-- 		Citizen.Wait(1000)
+-- 	end
+-- 	TriggerServerEvent("server:alterStress",false,removedStress)
+-- end)
+
+local useMph = false -- if false, it will display speed in kph
+
+Citizen.CreateThread(function()
+  local resetSpeedOnEnter = true
+  while true do
+    Citizen.Wait(0)
+    local playerPed = GetPlayerPed(-1)
+    local vehicle = GetVehiclePedIsIn(playerPed,false)
+    if GetPedInVehicleSeat(vehicle, -1) == playerPed and IsPedInAnyVehicle(playerPed, false) then
+
+      -- This should only happen on vehicle first entry to disable any old values
+      if resetSpeedOnEnter then
+        maxSpeed = GetVehicleHandlingFloat(vehicle,"CHandlingData","fInitialDriveMaxFlatVel")
+        SetEntityMaxSpeed(vehicle, maxSpeed)
+        resetSpeedOnEnter = false
+      end
+      -- Disable speed limiter
+      if IsControlJustReleased(0,252) and IsControlPressed(0,131) then
+        maxSpeed = GetVehicleHandlingFloat(vehicle,"CHandlingData","fInitialDriveMaxFlatVel")
+        SetEntityMaxSpeed(vehicle, maxSpeed)
+		exports['nots']:SendNotify("info", "", "Speed limiter disabled", 3000)
+		limiter = false
+        -- showHelpNotification("Speed limiter disabled")
+      -- Enable speed limiter
+      elseif IsControlJustReleased(0,252) then
+		limiter = 100
+        cruise = GetEntitySpeed(vehicle)
+        SetEntityMaxSpeed(vehicle, cruise)
+        if useMph then
+          cruise = math.floor(cruise * 2.23694 + 0.5)
+        --   showHelpNotification("Speed limiter set to "..cruise.." mph. ~INPUT_VEH_SUB_ASCEND~ + ~INPUT_MP_TEXT_CHAT_TEAM~ to disable.")
+		exports['nots']:SendNotify("info", "", "Speed limiter set to"..cruise, 3000)
+        else
+          cruise = math.floor(cruise * 3.6 + 0.5)
+        --   showHelpNotification("Speed limiter set to "..cruise.." km/h. ~INPUT_VEH_SUB_ASCEND~ + ~INPUT_MP_TEXT_CHAT_TEAM~ to disable.")
+		exports['nots']:SendNotify("info", "", "Speed limiter set to "..cruise.." kmh", 3000)
+        end
+      end
+    else
+      resetSpeedOnEnter = true
+    end
+  end
 end)
 
-
-RegisterNetEvent("stress:timed")
-AddEventHandler("stress:timed",function(alteredValue,scenario)
-	local removedStress = 0
-	Wait(1000)
-
-	TriggerEvent("DoShortHudText",'Stress is being relieved',6)
-	SetPlayerMaxArmour(PlayerId(), 30 )
-	while true do
-		removedStress = removedStress + 100
-		if removedStress >= alteredValue then
-			break
-		end
-        local armor = GetPedArmour(PlayerPedId())
-        SetPedArmour(PlayerPedId(),armor+3)
-		if scenario ~= "None" then
-			if not IsPedUsingScenario(PlayerPedId(),scenario) then
-				TriggerEvent("animation:cancel")
-				break
-			end
-		end
-		Citizen.Wait(1000)
-	end
-	TriggerServerEvent("server:alterStress",false,removedStress)
-end)
-
-RegisterNetEvent("stress:timed2")
-AddEventHandler("stress:timed2",function(alteredValue,scenario)
-	local removedStress = 0
-	Wait(1000)
-
-	TriggerEvent("DoShortHudText",'Stress is being relieved',6)
-	SetPlayerMaxArmour(PlayerId(), 60 )
-	while true do
-		removedStress = removedStress + 100
-		if removedStress >= alteredValue then
-			break
-		end
-        local armor = GetPedArmour(PlayerPedId())
-        SetPedArmour(PlayerPedId(),armor+3)
-		if scenario ~= "None" then
-			if not IsPedUsingScenario(PlayerPedId(),scenario) then
-				TriggerEvent("animation:cancel")
-				break
-			end
-		end
-		Citizen.Wait(1000)
-	end
-	TriggerServerEvent("server:alterStress",false,removedStress)
+RegisterNetEvent("putOnHarness")
+AddEventHandler("putOnHarness", function(harness)
+    isBlocked = devmode
 end)
 
 
@@ -1371,43 +1427,43 @@ AddEventHandler("iconic-adminmenu:currentDevmode", function(devmode)
     isBlocked = devmode
 end)
 
-Citizen.CreateThread(function()
-    while true do
-        if not isBlocked then
-            if stresslevel > 7500 then
-                ShakeGameplayCam('MEDIUM_EXPLOSION_SHAKE', 0.12)
-            elseif stresslevel > 4500 then
-                ShakeGameplayCam('MEDIUM_EXPLOSION_SHAKE', 0.08)
-            elseif stresslevel > 2000 then
-                ShakeGameplayCam('MEDIUM_EXPLOSION_SHAKE', 0.03)
-            end
-        end 
-        Citizen.Wait(2000)
-    end
-end)
+-- Citizen.CreateThread(function()
+--     while true do
+--         if not isBlocked then
+--             if stresslevel > 7500 then
+--                 ShakeGameplayCam('MEDIUM_EXPLOSION_SHAKE', 0.12)
+--             elseif stresslevel > 4500 then
+--                 ShakeGameplayCam('MEDIUM_EXPLOSION_SHAKE', 0.08)
+--             elseif stresslevel > 2000 then
+--                 ShakeGameplayCam('MEDIUM_EXPLOSION_SHAKE', 0.03)
+--             end
+--         end 
+--         Citizen.Wait(2000)
+--     end
+-- end)
 
 currentValues["oxy"] = 25.0
-stresslevel = 0
+-- stresslevel = 0
 
-RegisterNetEvent("police:setClientMeta")
-AddEventHandler("police:setClientMeta",function(meta)
-	if meta == nil then return end
-	-- if meta.thirst == nil then currentValues["thirst"] = 100 else currentValues["thirst"] = meta.thirst end
-	-- if meta.hunger == nil then currentValues["hunger"] = 100 else currentValues["hunger"] = meta.hunger end
-	if meta.health == nil then
-		return
-	end
+-- RegisterNetEvent("police:setClientMeta")
+-- AddEventHandler("police:setClientMeta",function(meta)
+-- 	if meta == nil then return end
+-- 	-- if meta.thirst == nil then currentValues["thirst"] = 100 else currentValues["thirst"] = meta.thirst end
+-- 	-- if meta.hunger == nil then currentValues["hunger"] = 100 else currentValues["hunger"] = meta.hunger end
+-- 	if meta.health == nil then
+-- 		return
+-- 	end
 
-	if meta.health < 10.0 then
-		SetEntityHealth(PlayerPedId(),10.0)
-	else
-		SetEntityHealth(PlayerPedId(),meta.health)
-	end
+-- 	if meta.health < 10.0 then
+-- 		SetEntityHealth(PlayerPedId(),10.0)
+-- 	else
+-- 		SetEntityHealth(PlayerPedId(),meta.health)
+-- 	end
 
 	
-	SetPlayerMaxArmour(PlayerPedId(), 60 )
-	SetPedArmour(PlayerPedId(),meta.armour)
-end)
+-- 	SetPlayerMaxArmour(PlayerPedId(), 60 )
+-- 	SetPedArmour(PlayerPedId(),meta.armour)
+-- end)
 
 RegisterNetEvent("np-admin:currentDevmode")
 AddEventHandler("np-admin:currentDevmode", function(devmodeToggle)

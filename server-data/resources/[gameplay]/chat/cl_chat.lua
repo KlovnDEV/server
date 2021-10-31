@@ -15,7 +15,7 @@ RegisterNetEvent('_chat:messageEntered')
 
 --deprecated, use chat:addMessage
 AddEventHandler('chatMessage', function(author, color, text)
-  local hud = exports["isPed"]:isPed("hud")
+  local hud = true
   if color == 8 then
     TriggerEvent("phone:addnotification",author,text)
     return
@@ -74,7 +74,7 @@ end)
 
 
 AddEventHandler('chat:addMessage', function(message)
-  local hud = exports["isPed"]:isPed("hud")
+  local hud = true
   if hud then
     SendNUIMessage({
       type = 'ON_MESSAGE',

@@ -10,7 +10,7 @@ end
 
 RegisterCommand('test', function()
     showInteraction("[E] maika mu da eba", 'info')
-end)
+end)	
 
 
 function hideInteraction()

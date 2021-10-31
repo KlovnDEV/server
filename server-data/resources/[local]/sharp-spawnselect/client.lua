@@ -19,12 +19,12 @@ local pointCamCoords2 = 0
 local cam1Time = 500
 local cam2Time = 1000
 
-
 RegisterNUICallback("SpawnPlayer", function()
 	if selectedspawnposition ~= nil then
 		SpawnPlayer(selectedspawnposition)
         Citizen.Wait(300)
-        RPC.execute('client', 'iconic-hud:EnableHud', '')
+        TriggerEvent('tasknotify:guiupdate', '', 'Tax rate is 15%', 5000)
+        RPC.execute('client', 'rpc:isloggedin', '')
 	else
         TriggerEvent('spawnselector:setNui')
 		print("You need to select a spawn point!")

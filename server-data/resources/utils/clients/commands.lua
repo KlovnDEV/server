@@ -9,13 +9,20 @@ TriggerEvent('chat:addSuggestion', '/debug', 'On/off debug mode')
 TriggerEvent('chat:addSuggestion', '/hud', 'Enable/Disable Hud')
 TriggerEvent('chat:addSuggestion', '/teleport', 'Teleport to xyz')
 TriggerEvent('chat:addSuggestion', '/debug', 'Enable/Disable Debug')
+TriggerEvent('chat:addSuggestion', '/relax', 'Relax (low the stress)')
+TriggerEvent('chat:addSuggestion', '/plate', 'Get vehicle plate')
 
 RegisterCommand('coords', function(source, args, rawCommand)
     RPC.execute('client', 'server-utilities:xyz', '')
 end)
 
+RegisterCommand('plate', function(source, args, rawCommand)
+    RPC.execute('client', 'server-utilities:changeVehiclePlate', '')
+end)
+
 RegisterCommand('car', function(source, args, rawCommand)
-    RPC.execute('client', 'server-utilities:spawnVehicle', args[1])
+    local vehicleInput = exports["interact"]:KeyboardInput({rows = {{id = 0, txt = "Vehicle Model"}}})
+    RPC.execute('client', 'server-utilities:spawnVehicle', vehicleInput[1].input)
 end)
 
 RegisterCommand('sit', function(source, args, rawCommand)
@@ -38,6 +45,10 @@ RegisterCommand('ad', function(source, args, rawCommand)
     RPC.execute('server', 'adminCheck', '')
 end)
 
+RegisterCommand('relax', function(source, args, rawCommand)
+    RPC.execute('server', 'relaxStress', '')
+end)
+
 RegisterCommand('devmode', function(source, args, rawCommand)
     RPC.execute('client', 'np-admin:devmode', '')
 end)
@@ -46,7 +57,7 @@ RegisterCommand('debug', function(source, args, rawCommand)
     RPC.execute('client', 'hud:enabledebug', '')
 end)
 
-RegisterCommand('id', function(source, args, rawCommand)
+RegisterCommand('ids', function(source, args, rawCommand)
     RPC.execute('client', 'getId', '')
 end)
 

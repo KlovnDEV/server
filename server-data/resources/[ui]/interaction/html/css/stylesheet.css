@@ -40,10 +40,10 @@ html, body{
     border-radius:3px; 
 }
 
-#title, #text{
+/* #title, #text{ */
     /* width:calc(100% - 20px);
     height:calc(100% - 20px); */
-}
+/* } */
 
 #text{
     padding: 17px;
@@ -56,6 +56,6 @@ html, body{
     /* font-feature-settings: "c2sc"; */
     font-weight: 600;
     /* font-size: 20px; */
-    text-transform: none
-    text-align:center;
+    text-transform: none;
+    text-align: center;
 }

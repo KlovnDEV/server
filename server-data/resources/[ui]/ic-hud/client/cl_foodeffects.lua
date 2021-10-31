@@ -168,15 +168,15 @@ AddEventHandler('food:Condiment', function()
 	dstamina = 0
 	Citizen.Wait(1000)
 
-	currentValues["hunger"] = currentValues["hunger"] + 40
+	-- currentValues["hunger"] = currentValues["hunger"] + 40
 
-	if currentValues["hunger"] < 0 then
-		currentValues["hunger"] = 0
-	end
+	-- if currentValues["hunger"] < 0 then
+	-- 	currentValues["hunger"] = 0
+	-- end
 
-	if currentValues["hunger"] > 100 then
-		currentValues["hunger"] = 100
-	end
+	-- if currentValues["hunger"] > 100 then
+	-- 	currentValues["hunger"] = 100
+	-- end
 
 	if stresslevel > 500 then
 		SetRunSprintMultiplierForPlayer(PlayerId(), 1.15)

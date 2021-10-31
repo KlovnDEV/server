@@ -117,6 +117,14 @@ end)
 RegisterNetEvent('jobcetner:setjob')
 AddEventHandler('jobcetner:setjob', function(name, grade)
     TriggerServerEvent('jobsystem:Job', name, grade)
+    local mess = "Congrats you have new job !"
+    exports['nots']:SendNotify("info", "", mess, 3000)
+end)
+
+RegisterCommand('twt', function(source, args, rawCommand)
+    local inputMessage = exports["interact"]:KeyboardInput({rows = {{id = 0, txt = "Message"}}})
+
+    exports['nots']:SendNotify("twitter", "", inputMessage[1].input, 3000)
 end)
 
 RegisterNetEvent('jobcetner:jobs')
@@ -144,8 +152,7 @@ AddEventHandler('jobcetner:jobs', function(name, grade)
             params = {
                 event = "jobcetner:setjob",
                 args = {
-                    name = miner,
-                    grade = 0,
+
                 }
             }
         },

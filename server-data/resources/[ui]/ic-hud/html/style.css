@@ -191,6 +191,14 @@ body {
     bottom: .85vh;
 }
 
+.fa-user-slash {
+    color: white;
+    position: absolute;
+    font-size: 1.65vh;
+    left: 0.38vw;
+    bottom: .95vh;
+}
+
 .fa-tachometer-alt {
     color: white;
     position: absolute;

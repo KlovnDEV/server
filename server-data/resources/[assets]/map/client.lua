@@ -3,8 +3,9 @@ local minimap = RequestScaleformMovie("minimap")
 
 Citizen.CreateThread(function()
     while true do
-        Wait(2000)
-        if IsPedInAnyVehicle(PlayerPedId(-1), false) then
+        Wait(500)
+        if IsPedInAnyVehicle(PlayerPedId(), false) then
+            Wait(1000)
             ToggleRadar(true)
             SendNUIMessage({mapoutline = true})
             TriggerVehicleLoop()

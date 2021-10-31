@@ -1,0 +1,115 @@
+.target-wrapper {
+    display: none;
+}
+
+.target-eye {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-shadow: 2px 2px 5px black;
+    transform: translateY(-50%) translateX(-50%);
+    font-size: 3vh;
+}
+
+.target-label-wrapper {
+    position: absolute;
+    right: 79.8vh;
+    top: 52.3vh;
+    margin-top: -13px;
+    width: 11vh;
+}
+
+.target-label {
+    color:#fff;
+    letter-spacing: 0.1;
+    font-family: Arial, Helvetica, sans-serif;
+    text-shadow: 2px 2px 2px rgb(66, 66, 66);
+    text-decoration: none;
+    font-variant: small-caps;
+    font-style: normal;
+    font-weight: 600;
+    text-transform: none
+    text-align:center;
+    user-select: none;
+    white-space: nowrap;
+}
+
+/* .target-label { */
+    /* list-style: none;
+    font-size: 1.67vh;
+    font-weight: 700;
+    font-family: Monospace;
+    font-family: Sans-serif;
+    font-variant-caps: small-caps;
+    color: white;
+    text-shadow: 2px 2px 2px rgb(66, 66, 66);
+    text-transform: capitalize;
+    user-select: none;
+    white-space: nowrap; */
+/* } */
+
+.target-icon {
+    font-size: 1.90vh;
+    text-shadow: 2px 2px 4px rgb(0, 0, 0);
+    color: rgb(48, 229, 152);
+}
+
+
+/* 
+body{
+    font-family: "Courier New", Courier, monospace;
+    font-weight:0;
+    font-size:17px;
+    
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+    letter-spacing:1px;
+    color:#E6E6E5;
+    width:100%;
+    opacity:1;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 0.7px;
+    font-weight: 600;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: small-caps;
+    text-transform: none;
+    position: relative;
+    z-index: 99;
+    text-shadow: 2px 1px 13px rgba(0,0,0,1);  }
+
+
+.target-wrapper {
+    display: none;
+}
+
+.target-eye {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    font-size: 3vh;
+}
+
+.target-label-wrapper {
+    position: absolute;
+    right: 80vh;
+    top: 52vh;
+    margin-top: -5px;
+    width: 11vh;
+}
+
+.target-label {
+    list-style: none;
+    font-size: 1.3vh;
+    font-weight: bold;
+    font-family: sans-serif;
+    color: white;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.target-icon {
+    color: #05f1b2;
+} */
