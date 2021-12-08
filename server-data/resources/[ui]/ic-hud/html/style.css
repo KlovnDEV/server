@@ -250,16 +250,16 @@ body {
 .fuel {
     position: absolute;
     bottom: 5.25vh;
-    left: 15.4vw;
+    left: 18.5vw;
 }
 
 
 #FuelCircle {
-    width: 3vh !important;
-    height: 3vh !important;
+    width: 2.7vh !important;
+    height: 2.7vh !important;
     position: absolute;
-    left: 20.4vh;
-    bottom: 4.2vh;
+    left: 30.4vh;
+    bottom: 9.2vh;
     background: rgba(27, 27, 27, 0.336);
     transform: rotate(-180deg);
 }
@@ -309,7 +309,8 @@ body {
     height: 100vh;
 }
 
-#SpeedGauge {
+#SpeedGauge { 
+    /* tva e gornoto deto e za tva det se murda na kilometraja */
     position: relative;
     width: 5.1vw;
     height: 2vh;
@@ -322,23 +323,24 @@ body {
 .speedSVG {
     position: absolute;
     bottom: 5vh;
-    left: 13vw;
+    left: 15.56vw;
 }
 
 .speedometerPost {
     position: absolute;
     bottom: 0.1vh;
-    left: 0.1vw;
+    left: 0.5vw;
 }
 
-.Speed_Meter {
+/* tva sa chislata na kilometraja */
+.Speed_Meter { 
     display: flex;
     width: 100vw;
     height: 100vh;
     align-items: center;
     justify-content: center;
     position: relative;
-    right: 35.040vw;
+    right: 32.500vw;
     top: 40.75vh;
     font-size: 1.5vh;
     color: white;
@@ -350,13 +352,17 @@ body {
 
 .mph {
     position: absolute;
+    letter-spacing: 0.1;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.9vh;
+    text-decoration: none;
+    font-variant: small-caps;
+    font-style: normal;
+    font-size: 0.7vh;
     font-weight: bold;
     color: white;
     height: 1.0vh;
-    bottom: 7.4vh;
-    left: 14.37vw;
+    bottom: 7.1vh;
+    left: 16.99vw;
 }
 
 p{
@@ -365,7 +371,7 @@ p{
 
 p span {
     display: inline-block;
-    width: 150px;
+    width: 50px;
     text-align: right;
 }
 
@@ -380,8 +386,8 @@ p span {
 .Gas_Icon {
     position: absolute;
     bottom: 1.30vh;
-    left: 0.75vw;
-    font-size: 0.1vh;
+    left: 0.77vw;
+    font-size: 0.001vh;
     color: white;
     filter: drop-shadow(0px 0px 5px black)
 }
@@ -408,17 +414,17 @@ p span {
 .Seatbelt_Icon {
     position: absolute;
     color: white;
-    left: 17.5vw    ;
-    bottom: 9vh;
+    left: 20.1vw;
+    bottom: 7.4vh;
     font-size: 1.95vh;
     height: 1vh;
-    filter: drop-shadow(0px 0px 5px black)
+    /* filter: drop-shadow(0px 0px 5px black) */
 }
 
 .Check_Engine_Icon {
     position: absolute;
     color: white;
-    left: 19vw    ;
+    left: 21.3vw;
     bottom: 9vh;
     font-size: 1.95vh;
     height: 1vh;

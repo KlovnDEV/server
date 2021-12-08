@@ -216,12 +216,12 @@ window.addEventListener("message", function(event) {
     }
 
 // AUTOMATICS    
-    if (data.hp == 100) {
-        $("#HealthIndicator").fadeOut(2300);
-    }
-    else if (data.hp < 95) 
-        $("#HealthIndicator").fadeIn(2300);{
-    }
+    // if (data.hp == 100) {
+    //     $("#HealthIndicator").fadeOut(2300);
+    // }
+    // else if (data.hp < 95) 
+    //     $("#HealthIndicator").fadeIn(2300);{
+    // }
 
     if (data.armor == 100) {
         $("#ArmorIndicator").fadeOut(2300);

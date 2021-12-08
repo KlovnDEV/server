@@ -93,25 +93,27 @@
         <div id="Vehiclehud" class="Vehicle_hud">
             <div id="VehHud" class="Veh_Hud">
                 <div class="speedometerPost">
-                    <svg width="75" height="75" class="speedSVG">
-                        <circle id="SpeedGauge" class="backgroundCircle" stroke="#FFFFFF" stroke-width="5.4" style="stroke-opacity: 0.5;" fill="transparent" r="25" cx="38" cy="39" stroke-dasharray="77 53" stroke-dashoffset="0"/>
-                        <circle id="SpeedMeter" class="progress2 Speed_Meter" stroke="white" stroke-width="5.4" style="stroke-opacity: 1;" fill="transparent" r="25" cx="37" cy="39" stroke-dasharray="77 53" stroke-dashoffset="0"/>
+                    <svg width="75" height="75" class="speedSVG"> 
+                        <!--                                                                                                                               radiusa  - nastrani - nagore/nadolu -->
+                        <circle id="SpeedGauge" class="backgroundCircle" stroke="#FFFFFF" stroke-width="6.3" style="stroke-opacity: 0.5;" fill="transparent" r="28" cx="38" cy="39" stroke-dasharray="87 59" stroke-dashoffset="0"/>
+                        <circle id="SpeedMeter" class="progress2 Speed_Meter" stroke="white" stroke-width="6.3" style="stroke-opacity: 1;" fill="transparent" r="28" cx="37" cy="39" stroke-dasharray="118 76" stroke-dashoffset="0"/>
+                        <!-- dolnoto e za tva det murda -->
                     </svg>
                     <div id="SpeedMeter" class="Speed_Meter">300</div>
-                    <div id="mph" class="mph">MPH</div>
+                    <div id="mph" class="mph">KMH</div>
                 </div>
                 <div class="fuel">
                     <svg id="GasGauge" class="circle" width="40" height="40">
-                    <circle class="backgroundCircle" stroke="#FFFFFF" stroke-width="3" style="stroke-opacity: 0.5;" fill="transparent" r="12" cx="20" cy="20" stroke-dasharray="46 20" stroke-dashoffset="0"/>
-                    <circle class="progress Gas_gauge" stroke="white" stroke-width="3" style="stroke-opacity: 1;" fill="transparent" r="12" cx="20" cy="20" stroke-dasharray="46 20" stroke-dashoffset="0"/>
+                    <circle class="backgroundCircle" stroke="#FFFFFF" stroke-width="2.5" style="stroke-opacity: 0.5;" fill="transparent" r="12" cx="20" cy="20" stroke-dasharray="46 20" stroke-dashoffset="0"/>
+                    <circle class="progress Gas_gauge" stroke="white" stroke-width="2.5" style="stroke-opacity: 1;" fill="transparent" r="12" cx="20" cy="20" stroke-dasharray="46 20" stroke-dashoffset="0"/>
                     </svg>
                     <div id="GasIcon" class="Gas_Icon"><i class="fas fa-gas-pump"></i></div>
                 </div>
                 <!-- <div id="NosGauge" class="Nos_Gauge"></div>
                 <div id="Noslabel" class="Nos_Label"><i class="fas fa-wine-bottle"></i></div> -->
                 <div id="SeatbeltIcon" class="Seatbelt_Icon">
-                    <i id="Seatbelt_Icon2" href="belt.svg">></i>
-                    <!-- <i id="Seatbelt_Icon2" class="fak fa-logic-seatbelt"></i> -->
+                    <!-- <i id="Seatbelt_Icon2" href="belt.svg">></i> -->
+                    <i id="Seatbelt_Icon2" class="fas fa-user-alt-slash"></i>
                 </div>
                 <div id="checkengineIcon" class="Check_Engine_Icon">
                     <i id="checkengine" class="fas fa-engine-warning"></i>

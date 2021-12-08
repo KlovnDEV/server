@@ -1008,10 +1008,6 @@ AddEventHandler("raid_clothes:defaultReset", function()
     passedClothing = false
 end)
 
-RegisterCommand('dsd', function()
-    OpenMenu("clothing_shop")
-end)
-
 RegisterNetEvent("raid_clothes:settattoos")
 AddEventHandler("raid_clothes:settattoos", function(playerTattoosList)
     currentTats = playerTattoosList
@@ -1148,7 +1144,7 @@ local function listenForKeypress(zoneName, zoneData, isFree)
                 priceWithTax.text = isFree and 0 or priceWithTax.text
                 OpenMenu(zoneName, priceWithTax.text, currentPrice)
 
-                exports["cn-ui"]:Clear("cn-ui:drawnotify")
+                exports["interaction"]:hideInteraction()
             end
             Wait(0)
         end
@@ -1173,7 +1169,7 @@ end)
 AddEventHandler("polyzones:enter", function(zone, data)
     local currentZone = MenuData[zone]
     if currentZone then
-		exports["cn-ui"]:DrawNotify("cn-ui:drawnotify", "[E] Buy Clothes", "#147efb", "fas fa icons")
+		exports["interaction"]:showInteraction("[E] Buy Clothes")
         listenForKeypress(zone, currentZone, ((data and data.isFree) and true or false))
     end
 end)
@@ -1182,7 +1178,7 @@ AddEventHandler("polyzones:exit", function(zone)
     local currentZone = MenuData[zone]
     if currentZone then
         listening = false
-		exports["cn-ui"]:Clear("cn-ui:drawnotify")
+		exports["interaction"]:hideInteraction()
     end
 end)
 

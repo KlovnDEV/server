@@ -9,10 +9,6 @@ end)
 
 -- koil sucks
 
-RegisterCommand('hy', function()
-    SetPedArmour(PlayerPedId(), 0)
-end)
-
 RegisterNetEvent('plr:set:armor')
 AddEventHandler('plr:set:armor', function()
 if not IsAnimated then

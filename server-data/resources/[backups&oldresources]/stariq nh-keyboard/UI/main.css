@@ -1,0 +1,137 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.root-wrapper {
+    width: 40vw;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    position: absolute;
+    overflow: hidden;
+    background: transparent !important;
+}
+
+html,body {
+    background: transparent !important;
+}
+
+.main-wrapper {
+    width: 50%;
+    height: auto;
+    background-color: #202c3e;
+    /* background: #222832; */
+    margin: auto;
+    position: relative;
+    top: 10%;
+    overflow: hidden;
+    border-radius: 1px;
+    padding: 1.5rem;
+    display: none;
+}
+
+.heading {
+    width: 100%;
+    max-width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+    overflow: wrap;
+}
+
+.heading h1 {
+    /* color: #bbc1cb; */
+    color: #c1c9d3;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.85rem;
+    font-weight: bold;
+    position: relative;
+}
+
+.body {
+    width: 100%;
+    height: 100%;
+    min-height: 10%;
+    max-height: 70%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.body label {
+    color: #bbc1cb;
+    margin-top: 00.1em;
+}
+
+.body input[type="text"] {
+    background-color: #202c3e;
+    /* background: rgb(34, 40, 50); */
+    /* color: #bbc1cb; */
+    color: #c1c9d3;
+    border:none;
+    /* border-bottom: 1px solid #bbc1cb; */
+    border-bottom: 1px solid #c1c9d3;
+    padding: 5px 10px;
+    border-radius: 1px;
+    outline: none;
+}
+
+.body input[type="text"]:focus {
+    box-shadow: 0 0 0 0.1rem#202c3e;
+    /* box-shadow: 0 0 0 0.1rem#222832; */
+    border:none;
+    border-bottom: 2px solid #fcffff;
+    /* padding: 5px 10px; */
+    outline: none;
+}
+
+.body select {
+    background: #1f2533;
+    /* color: #bbc1cb; */
+    color: #c1c9d3;
+}
+
+
+.body option {
+    background-color: #202c3e;
+    /* background-color: rgba(34, 40, 50); */
+    /* color: #bbc1cb; */
+    color: #c1c9d3;
+    padding: 1rem 0;
+}
+
+.footer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5%;
+}
+
+.btn {
+    background-color: #95ee77;
+    color: black;
+    margin-bottom: 30px;
+    padding: .175rem 0.7rem;
+}
+
+
+.background {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* background-color: rgba(34, 40, 50); */
+    background-color: #202c3e;
+    z-index: -99;
+    display: none;
+}
+ 

@@ -21,8 +21,15 @@ RegisterCommand('plate', function(source, args, rawCommand)
 end)
 
 RegisterCommand('car', function(source, args, rawCommand)
-    local vehicleInput = exports["interact"]:KeyboardInput({rows = {{id = 0, txt = "Vehicle Model"}}})
-    RPC.execute('client', 'server-utilities:spawnVehicle', vehicleInput[1].input)
+    local keyboard, vehicle = exports["interact"]:Keyboard({
+        header = "", 
+        rows = {"Vehicle Model"}
+    })
+    if keyboard then
+        if vehicle then
+            RPC.execute('client', 'server-utilities:spawnVehicle', vehicle)
+        end
+    end
 end)
 
 RegisterCommand('sit', function(source, args, rawCommand)
@@ -72,7 +79,6 @@ end)
 
 RegisterCommand('heal', function(source, args, rawCommand)
     plr = PlayerPedId()
-
     if args[1] == 'h' then
         SetEntityHealth(plr, 200)
     elseif args[1] == 'b' then

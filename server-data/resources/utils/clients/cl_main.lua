@@ -34,12 +34,15 @@ AddEventHandler("server-utilities:changeVehiclePlate", function()
     local vehicle = GetVehiclePedIsIn(plr, false)
     local getPlate = GetVehicleNumberPlateText(vehicle)
 
-    local inputPlate = exports["interact"]:KeyboardInput({rows = {{id = 0, txt = "Vehicle Number Plate"}}})
-
-    if inputPlate ~= nil then
-        if inputPlate[1].input == nil then return end
-        SetVehicleNumberPlateText(vehicle, inputPlate[1].input)
-        print('Old Plate: '..getPlate..' New Plate: '..inputPlate[1].input)
+    local keyboard, plate = exports["interact"]:Keyboard({
+        header = "", 
+        rows = {"Plate Number"}
+    })
+    if keyboard then
+        if plate then
+            SetVehicleNumberPlateText(vehicle, plate)
+            print('Old Plate: '..getPlate..' New Plate: '..plate)
+        end
     end
 end)
 

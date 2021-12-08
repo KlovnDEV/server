@@ -36,7 +36,7 @@ body::-webkit-scrollbar {
 
 .button {
     width: auto;
-    max-width: 270px;
+    max-width: 255px;
     height: 10%;
     /* background: #1d273b; */
     /* background: #2c2e3f; */
@@ -52,10 +52,10 @@ body::-webkit-scrollbar {
     margin-top: 0.5rem;
     overflow: hidden;
     padding: 0.45rem;
-    border-radius: 0.3rem;
+    border-radius: 0.2rem;
     display: flex;
     flex-direction: column;
-    box-shadow: 0.0rem 0.0rem 0.1rem 0.05rem #000000;
+    box-shadow: 0.0rem 0.0rem 0.1rem 0.07rem #000000;
 }
 
 .button:hover{

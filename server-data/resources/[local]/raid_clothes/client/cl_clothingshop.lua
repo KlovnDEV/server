@@ -1,9 +1,10 @@
 
 Citizen.CreateThread(function()
-  exports["polyzones"]:AddBoxZone("clothing_shop", vector3(1098.07, 203.27, -49.44), 1.8, 2.4, {
-		heading=315,
-		minZ=-50.44,
-		maxZ=-48.04
+  exports["polyzones"]:AddBoxZone("clothing_shop", vector3(75.37, -1396.06, 29.38), 10.2, 6.8, {
+	heading=0,
+	debugPoly=true,
+	minZ=28.38,
+	maxZ=30.98
   })
 
 	exports["polyzones"]:AddBoxZone("clothing_shop", vector3(1692.16, 4822.06, 42.06), 5.2, 4.4, {

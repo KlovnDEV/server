@@ -4,6 +4,7 @@ game 'gta5'
 
 files {
 	'html/*',
+    'html/belt.svg',
 }
 
 client_scripts {

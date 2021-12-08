@@ -25,3 +25,21 @@ BoxZone:Create(vector3(-72.99, -816.34, 243.39), 1.6, 2, {
   maxZ=244.39
 })
 
+--Name: 123 | 2021-12-07T21:21:36Z
+BoxZone:Create(vector3(75.37, -1396.06, 29.38), 10.2, 6.8, {
+  name="123",
+  heading=0,
+  --debugPoly=true,
+  minZ=28.38,
+  maxZ=30.98
+})
+
+--Name: outfits tester | 2021-12-08T08:25:05Z
+BoxZone:Create(vector3(1011.6, -766.18, 57.92), 4.0, 7.4, {
+  name="outfits tester",
+  heading=309,
+  --debugPoly=true,
+  minZ=55.32,
+  maxZ=59.32
+})
+
